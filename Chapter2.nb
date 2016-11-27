@@ -1,0 +1,6071 @@
+(***********************************************************************
+
+                    Mathematica-Compatible Notebook
+
+This notebook can be used on any computer system with Mathematica 3.0,
+MathReader 3.0, or any compatible application. The data for the notebook 
+starts with the line of stars above.
+
+To get the notebook into a Mathematica-compatible application, do one of 
+the following:
+
+* Save the data starting with the line of stars above into a file
+  with a name ending in .nb, then open the file inside the application;
+
+* Copy the data starting with the line of stars above to the
+  clipboard, then use the Paste menu command inside the application.
+
+Data for notebooks contains only printable 7-bit ASCII and can be
+sent directly in email or through ftp in text mode.  Newlines can be
+CR, LF or CRLF (Unix, Macintosh or MS-DOS style).
+
+NOTE: If you modify the data for this notebook not in a Mathematica-
+compatible application, you must delete the line below containing the 
+word CacheID, otherwise Mathematica-compatible applications may try to 
+use invalid cache data.
+
+For more information on notebooks and Mathematica-compatible 
+applications, contact Wolfram Research:
+  web: http://www.wolfram.com
+  email: info@wolfram.com
+  phone: +1-217-398-0700 (U.S.)
+
+Notebook reader applications are available free of charge from 
+Wolfram Research.
+***********************************************************************)
+
+(*CacheID: 232*)
+
+
+(*NotebookFileLineBreakTest
+NotebookFileLineBreakTest*)
+(*NotebookOptionsPosition[    144958,       5151]*)
+(*NotebookOutlinePosition[    152100,       5328]*)
+(*  CellTagsIndexPosition[    151846,       5317]*)
+(*WindowFrame->Normal*)
+
+
+
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["\<\
+Chapter 2
+The Duffing Equation\
+\>", "Title",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \(Off[General::spell1]\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell["To symbolize some notations, we need to load the package", "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \(Needs["\<Utilities`Notation`\>"]\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell["2.1 The Duffing Equation", "Section",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell["\<\
+The free oscillations of many conservative systems having a single degree of \
+freedom are governed by an equation of the form\
+\>", "Text",
+  CellMargins->{{Inherited, 17.4375}, {Inherited, Inherited}},
+  Evaluatable->False,
+  TextAlignment->Left,
+  TextJustification->1,
+  AspectRatioFixed->True,
+  CellTags->{"ChapterTwo", "ChapterTwo.1", "ChapterTwo.1-1"}],
+
+Cell[BoxData[
+    \(\(\(eq21a = \(x\^\[DoublePrime]\)[t] + f[x[t]] == 0; 
+    \)\n (*\ An\ equation\ is\ set\ and\ then\ assigned\ to\ eq21a\ *) \)\)], 
+  "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[TextData[{
+  "where ",
+  Cell[BoxData[
+      \(TraditionalForm\`f\)]],
+  " is a nonlinear function of ",
+  Cell[BoxData[
+      \(TraditionalForm\`x[t]\)]],
+  ". Here, ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(x\^\[DoublePrime]\)[t]\)]],
+  " is the acceleration of the system, whereas ",
+  Cell[BoxData[
+      \(TraditionalForm\`f[x[t]]\)]],
+  " is the restoring force. Let ",
+  Cell[BoxData[
+      \(TraditionalForm\`x = x\_0\)]],
+  " be an equilibrium position of the system. Then ",
+  Cell[BoxData[
+      \(TraditionalForm\`x\_0\)]],
+  " is a constant and hence ",
+  Cell[BoxData[
+      \(TraditionalForm\`f[x\_0] = 0\)]],
+  ". In order for ",
+  StyleBox["Mathematica",
+    FontSlant->"Italic"],
+  " to interpret ",
+  Cell[BoxData[
+      \(TraditionalForm\`x\_0\)]],
+  " as a constant, we need to symbolize it. Otherwise,  if we replace ",
+  Cell[BoxData[
+      \(TraditionalForm\`x\)]],
+  " with an expression ",
+  Cell[BoxData[
+      \(TraditionalForm\`g[t]\)]],
+  ", ",
+  StyleBox["Mathematica",
+    FontSlant->"Italic"],
+  " will replace ",
+  Cell[BoxData[
+      \(TraditionalForm\`x\_0\)]],
+  " with ",
+  Cell[BoxData[
+      \(TraditionalForm\`g[t]\)]],
+  " sub ",
+  Cell[BoxData[
+      \(TraditionalForm\`0\)]],
+  " and not treat it as a constant. For example, replacing ",
+  Cell[BoxData[
+      \(TraditionalForm\`x\)]],
+  " with ",
+  Cell[BoxData[
+      \(TraditionalForm\`Sin[t]\)]],
+  " in the expression ",
+  Cell[BoxData[
+      \(TraditionalForm\`x\^2 + x\_0\)]],
+  " yields "
+}], "Text",
+  CellMargins->{{Inherited, 17.4375}, {Inherited, Inherited}},
+  Evaluatable->False,
+  TextAlignment->Left,
+  TextJustification->1,
+  AspectRatioFixed->True,
+  CellTags->{"ChapterTwo", "ChapterTwo.1", "ChapterTwo.1-3"}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(x\^2 + x\_0 /. x -> Sin[t]\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \(Sin[t]\^2 + \((Sin[t])\)\_0\)], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "Clearly, ",
+  Cell[BoxData[
+      \(TraditionalForm\`x\_0\)]],
+  " is treated as a variable ",
+  Cell[BoxData[
+      \(TraditionalForm\`x\)]],
+  " with subscript ",
+  Cell[BoxData[
+      \(TraditionalForm\`0\)]],
+  ", which is wrong. Therefore, we need to symbolize  ",
+  Cell[BoxData[
+      \(TraditionalForm\`x\_0\)]],
+  " as  (enter and select ",
+  Cell[BoxData[
+      \(TraditionalForm\`x\_0\)]],
+  " followed by clicking ",
+  StyleBox["Symbolize",
+    FontWeight->"Bold"],
+  Cell[BoxData[
+      \(TraditionalForm\`\([\[FilledSmallSquare]]\)\)]],
+  " from NotationPalette)"
+}], "Text",
+  CellMargins->{{Inherited, 17.4375}, {Inherited, Inherited}},
+  Evaluatable->False,
+  TextAlignment->Left,
+  TextJustification->1,
+  AspectRatioFixed->True,
+  CellTags->{"ChapterTwo", "ChapterTwo.1", "ChapterTwo.1-3"}],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{
+        RowBox[{"Symbolize", "[", 
+          TagBox[\(x\_0\),
+            NotationBoxTag,
+            Editable->True], "]"}], ";"}], 
+      \( (*\ Note\ that\ symbol\ form\ is\ also\ required\ in\ certain\ 
+            built - in\ functions\ *) \)}]], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[TextData[{
+  "Then",
+  StyleBox[", Mathematica",
+    FontSlant->"Italic"],
+  " treats the symbolized expression ",
+  Cell[BoxData[
+      \(TraditionalForm\`x\_0\)]],
+  " as a constant. Consequently, replacing ",
+  Cell[BoxData[
+      \(TraditionalForm\`x\)]],
+  " with  ",
+  Cell[BoxData[
+      \(TraditionalForm\`Sin[t]\)]],
+  " in the expression ",
+  Cell[BoxData[
+      \(TraditionalForm\`x\^2 + x\_0\)]],
+  " yields "
+}], "Text",
+  CellMargins->{{Inherited, 17.4375}, {Inherited, Inherited}},
+  Evaluatable->False,
+  TextAlignment->Left,
+  TextJustification->1,
+  AspectRatioFixed->True,
+  CellTags->{"ChapterTwo", "ChapterTwo.1", "ChapterTwo.1-3"}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(x\^2 + \ x\_0 /. x -> Sin[t]\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \(x\_0 + Sin[t]\^2\)], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell["which is correct.", "Text",
+  CellMargins->{{Inherited, 17.4375}, {Inherited, Inherited}},
+  Evaluatable->False,
+  TextAlignment->Left,
+  TextJustification->1,
+  AspectRatioFixed->True,
+  CellTags->{"ChapterTwo", "ChapterTwo.1", "ChapterTwo.1-3"}],
+
+Cell[TextData[{
+  "Next, we assume that ",
+  Cell[BoxData[
+      \(TraditionalForm\`f\)]],
+  " is an analytic function of ",
+  Cell[BoxData[
+      \(TraditionalForm\`x\)]],
+  " at ",
+  Cell[BoxData[
+      \(TraditionalForm\`x = x\_0\)]],
+  " and expand it in a Taylor series around ",
+  Cell[BoxData[
+      \(TraditionalForm\`x\_0\)]],
+  " as"
+}], "Text",
+  CellMargins->{{Inherited, 17.4375}, {Inherited, Inherited}},
+  Evaluatable->False,
+  TextAlignment->Left,
+  TextJustification->1,
+  AspectRatioFixed->True,
+  CellTags->{"ChapterTwo", "ChapterTwo.1", "ChapterTwo.1-3"}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(fexp = Series[f[x[t]], {x[t], x\_0, 3}]\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    InterpretationBox[
+      RowBox[{\(f[x\_0]\), "+", 
+        RowBox[{
+          RowBox[{
+            SuperscriptBox["f", "\[Prime]",
+              MultilineFunction->None], "[", \(x\_0\), "]"}], " ", 
+          \((x[t] - x\_0)\)}], "+", 
+        RowBox[{\(1\/2\), " ", 
+          RowBox[{
+            SuperscriptBox["f", "\[DoublePrime]",
+              MultilineFunction->None], "[", \(x\_0\), "]"}], " ", 
+          \(\((x[t] - x\_0)\)\^2\)}], "+", 
+        RowBox[{\(1\/6\), " ", 
+          RowBox[{
+            SuperscriptBox["f", 
+              TagBox[\((3)\),
+                Derivative],
+              MultilineFunction->None], "[", \(x\_0\), "]"}], " ", 
+          \(\((x[t] - x\_0)\)\^3\)}], "+", 
+        InterpretationBox[\(O[x[t] - x\_0]\^4\),
+          SeriesData[ 
+            x[ t], x\[UnderBracket]Subscript\[UnderBracket]0, {}, 0, 4, 
+            1]]}],
+      SeriesData[ 
+        x[ t], x\[UnderBracket]Subscript\[UnderBracket]0, {
+        f[ x\[UnderBracket]Subscript\[UnderBracket]0], 
+        Derivative[ 1][ f][ x\[UnderBracket]Subscript\[UnderBracket]0], 
+        Times[ 
+          Rational[ 1, 2], 
+          Derivative[ 2][ f][ x\[UnderBracket]Subscript\[UnderBracket]0]], 
+        Times[ 
+          Rational[ 1, 6], 
+          Derivative[ 3][ f][ x\[UnderBracket]Subscript\[UnderBracket]0]]}, 
+        0, 4, 1]]], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "where terms up to cubic are retained. Using ",
+  StyleBox["Normal",
+    FontWeight->"Bold"],
+  " to truncate the higher-order terms from ",
+  StyleBox["fexp",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  ", we have"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(fpoly = fexp // Normal\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{\(f[x\_0]\), "+", 
+      RowBox[{\((\(-x\_0\) + x[t])\), " ", 
+        RowBox[{
+          SuperscriptBox["f", "\[Prime]",
+            MultilineFunction->None], "[", \(x\_0\), "]"}]}], "+", 
+      RowBox[{\(1\/2\), " ", \(\((\(-x\_0\) + x[t])\)\^2\), " ", 
+        RowBox[{
+          SuperscriptBox["f", "\[DoublePrime]",
+            MultilineFunction->None], "[", \(x\_0\), "]"}]}], "+", 
+      RowBox[{\(1\/6\), " ", \(\((\(-x\_0\) + x[t])\)\^3\), " ", 
+        RowBox[{
+          SuperscriptBox["f", 
+            TagBox[\((3)\),
+              Derivative],
+            MultilineFunction->None], "[", \(x\_0\), "]"}]}]}]], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "Substituting ",
+  StyleBox["fpoly",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " for ",
+  Cell[BoxData[
+      \(TraditionalForm\`f[x[t]]\)]],
+  " and using the equilibrium condition ",
+  Cell[BoxData[
+      \(TraditionalForm\`f[x\_0] = 0\)]],
+  ", we obtain"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(temp = \(eq21a /. {f[x[t]] -> fpoly}\) /. f[x\_0] -> 0\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{
+        RowBox[{\((\(-x\_0\) + x[t])\), " ", 
+          RowBox[{
+            SuperscriptBox["f", "\[Prime]",
+              MultilineFunction->None], "[", \(x\_0\), "]"}]}], "+", 
+        RowBox[{\(1\/2\), " ", \(\((\(-x\_0\) + x[t])\)\^2\), " ", 
+          RowBox[{
+            SuperscriptBox["f", "\[DoublePrime]",
+              MultilineFunction->None], "[", \(x\_0\), "]"}]}], "+", 
+        RowBox[{
+          SuperscriptBox["x", "\[DoublePrime]",
+            MultilineFunction->None], "[", "t", "]"}], "+", 
+        RowBox[{\(1\/6\), " ", \(\((\(-x\_0\) + x[t])\)\^3\), " ", 
+          RowBox[{
+            SuperscriptBox["f", 
+              TagBox[\((3)\),
+                Derivative],
+              MultilineFunction->None], "[", \(x\_0\), "]"}]}]}], "==", 
+      "0"}]], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "Now, we introduce the transformation ",
+  Cell[BoxData[
+      \(TraditionalForm\`x[t] \[RightArrow] x\_0 + u[t]\)]],
+  " in ",
+  StyleBox["temp",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " to obtain the final form of the equation that will be used in the \
+subsequent analysis. To accomplish this, we need to express this \
+transformation in a pure function form as ",
+  Cell[BoxData[
+      \(TraditionalForm\`x \[RightArrow] \((x\_0 + u[#]\ &)\)\)]],
+  "; otherwise, ",
+  StyleBox["Mathematica",
+    FontSlant->"Italic"],
+  " will not transform the derivatives of ",
+  Cell[BoxData[
+      \(TraditionalForm\`x[t]\)]],
+  " in terms of the derivatives of ",
+  Cell[BoxData[
+      \(TraditionalForm\`u[t]\)]],
+  " unless we explicitly define the rules for those derivatives; that is, it \
+will not replace ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(x\^\[Prime]\)[t]\)]],
+  " with ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(u\^\[Prime]\)[t]\)]],
+  " and ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(x\^\[DoublePrime]\)[t]\)]],
+  " with ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(u\^\[DoublePrime]\)[t]\)]],
+  " by simply substituting ",
+  Cell[BoxData[
+      \(TraditionalForm\`x[t] \[RightArrow] x\_0 + u[t]\)]],
+  ". Moreover, it will not replace ",
+  Cell[BoxData[
+      \(TraditionalForm\`x[p]\)]],
+  " with ",
+  Cell[BoxData[
+      \(TraditionalForm\`x\_0 + u[p]\)]],
+  " as desired. To see the difference between these two transformations, we \
+compare the following two statements:"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \({x[t], x[p], \(x\^\[Prime]\)[t], \(x\^\[DoublePrime]\)[t]} /. 
+      x[t] -> x\_0 + u[t]\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{\(x\_0 + u[t]\), ",", \(x[p]\), ",", 
+        RowBox[{
+          SuperscriptBox["x", "\[Prime]",
+            MultilineFunction->None], "[", "t", "]"}], ",", 
+        RowBox[{
+          SuperscriptBox["x", "\[DoublePrime]",
+            MultilineFunction->None], "[", "t", "]"}]}], "}"}]], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \({x[t], x[p], x[a, b], y[t], \(x\^\[Prime]\)[t], 
+        \(x\^\[DoublePrime]\)[t]} /. x -> \((x\_0 + u[#]&)\)\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+      \(x\_0 + u[t]\), ",", \(x\_0 + u[p]\), ",", \(x\_0 + u[a]\), ",", 
+        \(y[t]\), ",", 
+        RowBox[{
+          SuperscriptBox["u", "\[Prime]",
+            MultilineFunction->None], "[", "t", "]"}], ",", 
+        RowBox[{
+          SuperscriptBox["u", "\[DoublePrime]",
+            MultilineFunction->None], "[", "t", "]"}]}], "}"}]], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "We note that the pure function form can be used for any expression with \
+the head ",
+  Cell[BoxData[
+      \(TraditionalForm\`x\)]],
+  StyleBox[", ",
+    FontSlant->"Italic"],
+  "especially, for the derivatives. Consequently, we introduce this \
+transformation in pure function form into ",
+  StyleBox["temp",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " and obtain "
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(eq21b = temp /. x -> \((x\_0 + u[#]&)\)\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{
+        RowBox[{\(u[t]\), " ", 
+          RowBox[{
+            SuperscriptBox["f", "\[Prime]",
+              MultilineFunction->None], "[", \(x\_0\), "]"}]}], "+", 
+        RowBox[{\(1\/2\), " ", \(u[t]\^2\), " ", 
+          RowBox[{
+            SuperscriptBox["f", "\[DoublePrime]",
+              MultilineFunction->None], "[", \(x\_0\), "]"}]}], "+", 
+        RowBox[{
+          SuperscriptBox["u", "\[DoublePrime]",
+            MultilineFunction->None], "[", "t", "]"}], "+", 
+        RowBox[{\(1\/6\), " ", \(u[t]\^3\), " ", 
+          RowBox[{
+            SuperscriptBox["f", 
+              TagBox[\((3)\),
+                Derivative],
+              MultilineFunction->None], "[", \(x\_0\), "]"}]}]}], "==", 
+      "0"}]], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "To simplify the notation in ",
+  StyleBox["eq21b",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  ", we denote the coefficient of ",
+  Cell[BoxData[
+      \(TraditionalForm\`u[t]\^b\)]],
+  " by ",
+  Cell[BoxData[
+      \(TraditionalForm\`k\_b\)]],
+  ". The result is"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(eq21c = eq21b /. _. \ u[t]^b_.  -> k\_b\ u[t]^b\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{
+      \(k\_1\ u[t]\), "+", \(k\_2\ u[t]\^2\), "+", \(k\_3\ u[t]\^3\), "+", 
+        RowBox[{
+          SuperscriptBox["u", "\[DoublePrime]",
+            MultilineFunction->None], "[", "t", "]"}]}], "==", "0"}]], 
+  "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "We relate the ",
+  Cell[BoxData[
+      \(TraditionalForm\`k\_b\)]],
+  " to the derivatives of the function ",
+  Cell[BoxData[
+      \(TraditionalForm\`f[x]\)]],
+  " by using the built-in function ",
+  StyleBox["Cases",
+    FontWeight->"Bold"],
+  " as "
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(Cases[eq21b, a_. \ u[t]\^b_.  -> {k\_b -> a}, {2}] // Flatten\)], 
+  "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        RowBox[{\(k\_1\), "\[Rule]", 
+          RowBox[{
+            SuperscriptBox["f", "\[Prime]",
+              MultilineFunction->None], "[", \(x\_0\), "]"}]}], ",", 
+        RowBox[{\(k\_2\), "\[Rule]", 
+          RowBox[{\(1\/2\), " ", 
+            RowBox[{
+              SuperscriptBox["f", "\[DoublePrime]",
+                MultilineFunction->None], "[", \(x\_0\), "]"}]}]}], ",", 
+        RowBox[{\(k\_3\), "\[Rule]", 
+          RowBox[{\(1\/6\), " ", 
+            RowBox[{
+              SuperscriptBox["f", 
+                TagBox[\((3)\),
+                  Derivative],
+                MultilineFunction->None], "[", \(x\_0\), "]"}]}]}]}], "}"}]], 
+  "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "Most of this chapter is devoted to the special case of cubic \
+nonlinearities. Thus, we set the coefficient of the quadratic term in ",
+  StyleBox["eq21c",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " equal to zero and obtain"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(eq21d = eq21c /. k\_2 -> 0\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{\(k\_1\ u[t]\), "+", \(k\_3\ u[t]\^3\), "+", 
+        RowBox[{
+          SuperscriptBox["u", "\[DoublePrime]",
+            MultilineFunction->None], "[", "t", "]"}]}], "==", "0"}]], 
+  "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "which is called the ",
+  StyleBox["Duffing equation",
+    FontColor->RGBColor[0, 0, 1]],
+  ". We note that ",
+  Cell[BoxData[
+      \(TraditionalForm\`k\_1\)]],
+  " and ",
+  Cell[BoxData[
+      \(TraditionalForm\`k\_3\)]],
+  " may be positive or negative."
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[TextData[{
+  "It is a good practice to nondimensionalize the governing equations before \
+treating them with perturbation methods. To this end, we nondimensionalize ",
+  Cell[BoxData[
+      \(TraditionalForm\`u\)]],
+  " and ",
+  Cell[BoxData[
+      \(TraditionalForm\`t\)]],
+  " using a characteristic length ",
+  Cell[BoxData[
+      \(TraditionalForm\`U\)]],
+  " and a characteristic time ",
+  Cell[BoxData[
+      \(TraditionalForm\`T\)]],
+  " of the motion and denote the nondimensional variables by an asterisk. In \
+nondimensional form, ",
+  StyleBox["eq21d",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " becomes"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(eq21e = 
+      \(eq21d /. u -> \((U\ \(u\^*\)[#/T]\ &)\)\) /. t -> T\ \(t\^*\)\)], 
+  "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{
+      \(U\ k\_1\ \(u\^*\)[\(t\^*\)]\), "+", 
+        \(U\^3\ k\_3\ \(u\^*\)[\(t\^*\)]\^3\), "+", 
+        FractionBox[
+          RowBox[{"U", " ", 
+            RowBox[{
+              SuperscriptBox[\((\(u\^*\))\), "\[DoublePrime]",
+                MultilineFunction->None], "[", \(t\^*\), "]"}]}], 
+          \(T\^2\)]}], "==", "0"}]], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "Next, we multiply the left-hand side of ",
+  StyleBox["eq21e",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " (using ",
+  StyleBox["eq21e",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  "[[1]]) by ",
+  Cell[BoxData[
+      \(TraditionalForm\`T\^2/U\)]],
+  " so that the coefficient of ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(\(u\^*\)\^\[DoublePrime]\)[\(t\^*\)]\)]],
+  " is unity. The result is"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(eq21f = \((eq21e[\([1]\)]\ T\^2/U // Expand)\) == 0\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{
+      \(T\^2\ k\_1\ \(u\^*\)[\(t\^*\)]\), "+", 
+        \(T\^2\ U\^2\ k\_3\ \(u\^*\)[\(t\^*\)]\^3\), "+", 
+        RowBox[{
+          SuperscriptBox[\((\(u\^*\))\), "\[DoublePrime]",
+            MultilineFunction->None], "[", \(t\^*\), "]"}]}], "==", "0"}]], 
+  "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "We choose ",
+  Cell[BoxData[
+      \(TraditionalForm\`T\)]],
+  " so that the linear natural frequency of the system is unity; that is, we \
+let ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(k\_1\) T\^2 = 1\)]],
+  ", for ease of notation, we let ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Epsilon] = \(k\_3\) \(T\^2\) U\^2\)]],
+  ", drop the asterisk, and rewrite ",
+  StyleBox["eq21f",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " as"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(DuffingEq = 
+      \(eq21f /. {k\_1\ T\^2 -> 1, k\_3\ T\^2\ U\^2 -> \[Epsilon]}\) /. 
+        \(anything_\^*\) -> anything\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{\(u[t]\), "+", \(\[Epsilon]\ u[t]\^3\), "+", 
+        RowBox[{
+          SuperscriptBox["u", "\[DoublePrime]",
+            MultilineFunction->None], "[", "t", "]"}]}], "==", "0"}]], 
+  "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[
+"We note that \[Epsilon] is a nondimensional quantity, which is a measure of \
+the strength of the nonlinearity."], "Text",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["2.2 Straightforward Expansion", "Section",
+  CellMargins->{{Inherited, 17.4375}, {Inherited, Inherited}},
+  Evaluatable->False,
+  TextAlignment->Left,
+  TextJustification->1,
+  AspectRatioFixed->True,
+  CellTags->{"ChapterTwo", "ChapterTwo.1"}],
+
+Cell[TextData[{
+  "To solve the ",
+  StyleBox["DuffingEq",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  ", we augment it with the initial conditions"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \(\(ic = {u[0] == u0, \(u\^\[Prime]\)[0] == v0}; \)\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[TextData[{
+  "The solution ",
+  Cell[BoxData[
+      \(TraditionalForm\`u\)]],
+  " of the initial-value problem (IVP), consisting of the ",
+  StyleBox["DuffingEq",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " and associated initial conditions ",
+  StyleBox["ic",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  ", is a function of the independent variable ",
+  StyleBox["t",
+    FontSlant->"Italic"],
+  " and the parameter \[Epsilon]. Next, we determine an approximation of the \
+IVP for weak nonlinearity; that is, for small but finite \[Epsilon]."
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[TextData[{
+  "First, we set \[Epsilon] equal to zero in the ",
+  StyleBox["DuffingEq",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  ", augment the result with the initial conditions by using the ",
+  StyleBox["Mathematica",
+    FontSlant->"Italic"],
+  " command ",
+  StyleBox["Join",
+    FontWeight->"Bold"],
+  ", and obtain the following linear IVP:"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(linearIVP = Join[{DuffingEq /. \[Epsilon] -> 0}, ic]\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        RowBox[{
+          RowBox[{\(u[t]\), "+", 
+            RowBox[{
+              SuperscriptBox["u", "\[DoublePrime]",
+                MultilineFunction->None], "[", "t", "]"}]}], "==", "0"}], 
+        ",", \(u[0] == u0\), ",", 
+        RowBox[{
+          RowBox[{
+            SuperscriptBox["u", "\[Prime]",
+              MultilineFunction->None], "[", "0", "]"}], "==", "v0"}]}], 
+      "}"}]], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "The solution of this linear IVP can be obtained by using the ",
+  StyleBox["Mathematica",
+    FontSlant->"Italic"],
+  " command ",
+  StyleBox["DSolve",
+    FontWeight->"Bold"],
+  ". The result is"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(linearSol = \(DSolve[linearIVP, u[t], t]\)[\([1]\)]\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \({u[t] \[Rule] u0\ Cos[t] + v0\ Sin[t]}\)], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "When \[Epsilon] is small but different from zero, the solution of the \
+nonlinear initial-value problem is no longer given by ",
+  StyleBox["linearSol",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  ",",
+  StyleBox[" ",
+    FontSlant->"Italic"],
+  "but deviates from it. We try a correction in the form of a power series in \
+\[Epsilon]; that is, we expand ",
+  Cell[BoxData[
+      \(TraditionalForm\`u[t]\)]],
+  " in a power series in \[Epsilon] as"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \(uExpRule[maxOrder_] := 
+      u -> \((Sum[\[Epsilon]\^i\ u\_i[#], {i, 0, maxOrder}]&)\)\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[TextData[{
+  "where ",
+  Cell[BoxData[
+      \(TraditionalForm\`u\_0[t]\)]],
+  " is the solution of the linear problem. For example, to first order, we \
+have"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(u[t] /. uExpRule[1]\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \(u\_0[t] + \[Epsilon]\ u\_1[t]\)], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell["and to third order, we have", "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(u[t] /. uExpRule[3]\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \(u\_0[t] + \[Epsilon]\ u\_1[t] + \[Epsilon]\^2\ u\_2[t] + 
+      \[Epsilon]\^3\ u\_3[t]\)], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell["and to fifth order, we have", "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(u[t] /. uExpRule[5]\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \(u\_0[t] + \[Epsilon]\ u\_1[t] + \[Epsilon]\^2\ u\_2[t] + 
+      \[Epsilon]\^3\ u\_3[t] + \[Epsilon]\^4\ u\_4[t] + 
+      \[Epsilon]\^5\ u\_5[t]\)], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "Next, we restrict our discussion to first order; that is, we keep two \
+terms in the power series. Thus, we apply the rule ",
+  StyleBox["uExpRule",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  "[1] to the ",
+  StyleBox["DuffingEq",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  StyleBox[", ",
+    FontSlant->"Italic"],
+  "expand the result, and obtain"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(eq22atemp = DuffingEq /. uExpRule[1] // ExpandAll\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{
+      \(u\_0[t]\), "+", \(\[Epsilon]\ u\_0[t]\^3\), "+", 
+        \(\[Epsilon]\ u\_1[t]\), "+", 
+        \(3\ \[Epsilon]\^2\ u\_0[t]\^2\ u\_1[t]\), "+", 
+        \(3\ \[Epsilon]\^3\ u\_0[t]\ u\_1[t]\^2\), "+", 
+        \(\[Epsilon]\^4\ u\_1[t]\^3\), "+", 
+        RowBox[{
+          SubsuperscriptBox["u", "0", "\[DoublePrime]",
+            MultilineFunction->None], "[", "t", "]"}], "+", 
+        RowBox[{"\[Epsilon]", " ", 
+          RowBox[{
+            SubsuperscriptBox["u", "1", "\[DoublePrime]",
+              MultilineFunction->None], "[", "t", "]"}]}]}], "==", "0"}]], 
+  "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "Since we kept only terms up to ",
+  Cell[BoxData[
+      \(TraditionalForm\`O(\[Epsilon])\)]],
+  " in the expansion of ",
+  Cell[BoxData[
+      \(TraditionalForm\`u[t]\)]],
+  ", we need to neglect terms of order higher than \[Epsilon] in ",
+  StyleBox["eq22atemp",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " for consistency. To accomplish this, we use the rule ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Epsilon]\^\(n /; n > k\) \[RightArrow] 0\)]],
+  " to discard terms with order higher than ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Epsilon]\^k\)]],
+  " and obtain"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(eq22a = eq22atemp /. \[Epsilon]\^\(n_ /; n > 1\) -> 0\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{
+      \(u\_0[t]\), "+", \(\[Epsilon]\ u\_0[t]\^3\), "+", 
+        \(\[Epsilon]\ u\_1[t]\), "+", 
+        RowBox[{
+          SubsuperscriptBox["u", "0", "\[DoublePrime]",
+            MultilineFunction->None], "[", "t", "]"}], "+", 
+        RowBox[{"\[Epsilon]", " ", 
+          RowBox[{
+            SubsuperscriptBox["u", "1", "\[DoublePrime]",
+              MultilineFunction->None], "[", "t", "]"}]}]}], "==", "0"}]], 
+  "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "Setting the coefficients of like powers of \[Epsilon] in ",
+  StyleBox["eq22a",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " equal to zero, we obtain the following hierarchy of linear equations:"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(eqEps = CoefficientList[eq22a[\([1]\)], \[Epsilon]] == 0 // Thread\)], 
+  "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        RowBox[{
+          RowBox[{\(u\_0[t]\), "+", 
+            RowBox[{
+              SubsuperscriptBox["u", "0", "\[DoublePrime]",
+                MultilineFunction->None], "[", "t", "]"}]}], "==", "0"}], 
+        ",", 
+        RowBox[{
+          RowBox[{\(u\_0[t]\^3\), "+", \(u\_1[t]\), "+", 
+            RowBox[{
+              SubsuperscriptBox["u", "1", "\[DoublePrime]",
+                MultilineFunction->None], "[", "t", "]"}]}], "==", "0"}]}], 
+      "}"}]], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "which needs to be solved in succession. That is, we first solve the first \
+equation in ",
+  StyleBox["eqEps",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " to obtain ",
+  Cell[BoxData[
+      \(TraditionalForm\`u\_0[t]\)]],
+  " and then substitute the result into the second equation in ",
+  StyleBox["eqEps",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " to obtain a linear nonhomogeneous equation, which can be solved for ",
+  Cell[BoxData[
+      \(TraditionalForm\`u\_1[t]\)]],
+  "."
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[TextData[{
+  "The general solution of the zeroth-order problem (",
+  StyleBox["eqEps",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  "[[1]]) can be expressed in Cartesian form as"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(\(DSolve[eqEps[\([1]\)], u\_0[t], t]\)[\([1]\)]\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \({u\_0[t] \[Rule] C[2]\ Cos[t] - C[1]\ Sin[t]}\)], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "Alternatively, we can express the solution of the zeroth-order problem in \
+the polar form ",
+  Cell[BoxData[
+      \(TraditionalForm
+      \`u\_0[t] \[RightArrow] \(a\_0\) Cos[t + \[Beta]\_0]\)]],
+  " by adding two appropriate initial conditions to ",
+  StyleBox["eqEps",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  "[[1]] as"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(sol0 = 
+      \(DSolve[{eqEps[\([1]\)], u\_0[0] == a\_0\ Cos[\[Beta]\_0], 
+              \(u\_0\^\[Prime]\)[0] == \(-a\_0\)\ Sin[\[Beta]\_0]}, u\_0[t], 
+            t]\)[\([1]\)] // Simplify\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \({u\_0[t] \[Rule] Cos[t + \[Beta]\_0]\ a\_0}\)], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "where ",
+  Cell[BoxData[
+      \(TraditionalForm\`a\_0\)]],
+  " and ",
+  Cell[BoxData[
+      \(TraditionalForm\`b\_0\)]],
+  " are arbitrary constants. Because ",
+  StyleBox["eqEps",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  "[[1]] represents a linear undamped oscillator, one can write down its \
+general solution in either Cartesian or polar form without using the ",
+  StyleBox["Mathematica",
+    FontSlant->"Italic"],
+  " command ",
+  StyleBox["DSolve",
+    FontWeight->"Bold"],
+  ". "
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[TextData[{
+  "Substituting for ",
+  Cell[BoxData[
+      \(TraditionalForm\`u\_0[t]\)]],
+  " in the first-order equation (",
+  StyleBox["eqEps",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  "[[2]]) and determining the general solution of the resulting equation for \
+",
+  Cell[BoxData[
+      \(TraditionalForm\`u\_1[t]\)]],
+  ", we obtain"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(sol1temp = 
+      \(DSolve[eqEps[\([2]\)] /. sol0, u\_1[t], t]\)[\([1]\)] // Simplify\)], 
+  "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \({u\_1[t] \[Rule] 
+        1\/32\ \((
+            32\ \((C[2]\ Cos[t] - C[1]\ Sin[t])\) + 
+              \((\(-6\)\ Cos[t + \[Beta]\_0] + Cos[3\ \((t + \[Beta]\_0)\)] - 
+                    12\ t\ Sin[t + \[Beta]\_0])\)\ a\_0\%3)\)}\)], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "We note that the homogeneous part of ",
+  StyleBox["sol1temp",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " consists of the terms involving the ",
+  Cell[BoxData[
+      \(TraditionalForm\`C[i]\)]],
+  " (the usual case) and ",
+  Cell[BoxData[
+      \(TraditionalForm\`Cos[t + \[Beta]\_0]\)]],
+  " (obtained from ",
+  StyleBox["DSolve",
+    FontWeight->"Bold"],
+  " in this case). Hence, we can replace them by ",
+  Cell[BoxData[
+      \(TraditionalForm\`a\_1\ Cos[t + \[Beta]\_1]\)]],
+  " and rewrite ",
+  StyleBox["sol1temp",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " as"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(sol1 = 
+      u\_1[t] \[Rule] 
+        \((sol1temp[\([1, 2]\)] /. {C[_] -> 0, Cos[t + _] -> 0})\) + 
+          a\_1\ Cos[t + \[Beta]\_1]\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \(u\_1[t] \[Rule] 
+      1\/32\ \((Cos[3\ \((t + \[Beta]\_0)\)] - 12\ t\ Sin[t + \[Beta]\_0])\)\ 
+          a\_0\%3 + Cos[t + \[Beta]\_1]\ a\_1\)], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "Combining the solutions of the zeroth- and first-order problems, we obtain \
+the general solution of the ",
+  StyleBox["DuffingEq",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  ", to first order, as"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(sol = u[t] == \((\(\(u[t] /. uExpRule[1]\) /. sol0\) /. sol1)\)\)], 
+  "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \(u[t] == 
+      Cos[t + \[Beta]\_0]\ a\_0 + 
+        \[Epsilon]\ 
+          \((1\/32\ 
+                \((Cos[3\ \((t + \[Beta]\_0)\)] - 12\ t\ Sin[t + \[Beta]\_0])
+                  \)\ a\_0\%3 + Cos[t + \[Beta]\_1]\ a\_1)\)\)], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "where ",
+  Cell[BoxData[
+      \(TraditionalForm\`a\_0\)],
+    CellMargins->{{12, Inherited}, {Inherited, Inherited}}],
+  ", ",
+  Cell[BoxData[
+      \(TraditionalForm\`a\_1\)]],
+  ", ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Beta]\_0\)]],
+  ", and ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Beta]\_1\)]],
+  " are arbitrary constants."
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[TextData[{
+  "We started with a second-order equation that can support two initial \
+conditions but it appears that we ended up with four arbitrary constants. It \
+turns out that only two of the constants ",
+  Cell[BoxData[
+      \(TraditionalForm\`a\_0\)]],
+  ", ",
+  Cell[BoxData[
+      \(TraditionalForm\`a\_1\)]],
+  ", ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Beta]\_0\)]],
+  ", and ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Beta]\_1\)]],
+  " are arbitrary and that the two initial conditions in ",
+  StyleBox["ic",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " are sufficient to determine all of them. To see this, we first change the \
+",
+  StyleBox["Equal",
+    FontWeight->"Bold"],
+  " form in ",
+  StyleBox["ic",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " to the ",
+  StyleBox["Rule",
+    FontWeight->"Bold"],
+  " form as"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(icRule = ic /. Equal -> Rule\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{\(u[0] \[Rule] u0\), ",", 
+        RowBox[{
+          RowBox[{
+            SuperscriptBox["u", "\[Prime]",
+              MultilineFunction->None], "[", "0", "]"}], "\[Rule]", "v0"}]}], 
+      "}"}]], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "Then, we impose the initial conditions ",
+  StyleBox["icRule",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " by evaluating ",
+  StyleBox["sol",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " and its derivative at ",
+  Cell[BoxData[
+      \(TraditionalForm\`t = 0\)]],
+  " according to"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(eq22b = \({sol, D[sol, t]} /. t -> 0\) /. icRule\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \({u0 == 
+        Cos[\[Beta]\_0]\ a\_0 + 
+          \[Epsilon]\ 
+            \((1\/32\ Cos[3\ \[Beta]\_0]\ a\_0\%3 + Cos[\[Beta]\_1]\ a\_1)\), 
+      v0 == \(-Sin[\[Beta]\_0]\)\ a\_0 + 
+          \[Epsilon]\ 
+            \((1\/32\ \((\(-12\)\ Sin[\[Beta]\_0] - 3\ Sin[3\ \[Beta]\_0])\)\ 
+                  a\_0\%3 - Sin[\[Beta]\_1]\ a\_1)\)}\)], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "We equate the coefficient of each power of ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Epsilon]\)]],
+  " in ",
+  StyleBox["eq22b",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " and obtain four algebraic equations for the constants ",
+  Cell[BoxData[
+      \(TraditionalForm\`a\_0\)]],
+  ", ",
+  Cell[BoxData[
+      \(TraditionalForm\`a\_1\)]],
+  ", ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Beta]\_0\)]],
+  ", and ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Beta]\_1\)]],
+  ". The result is"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(eq22c = 
+      Table[Map[Coefficient[#, \[Epsilon], i]\ &, eq22b, {2}], {i, 0, 1}]\)], 
+  "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \({{u0 == Cos[\[Beta]\_0]\ a\_0, v0 == \(-Sin[\[Beta]\_0]\)\ a\_0}, {
+        0 == 1\/32\ Cos[3\ \[Beta]\_0]\ a\_0\%3 + Cos[\[Beta]\_1]\ a\_1, 
+        0 == 1\/32\ \((\(-12\)\ Sin[\[Beta]\_0] - 3\ Sin[3\ \[Beta]\_0])\)\ 
+              a\_0\%3 - Sin[\[Beta]\_1]\ a\_1}}\)], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "Thus, once ",
+  Cell[BoxData[
+      \(TraditionalForm\`a\_0\)]],
+  " and ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Beta]\_0\)]],
+  " are known from ",
+  StyleBox["eq22c",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  "[[1]], ",
+  Cell[BoxData[
+      \(TraditionalForm\`a\_1\)]],
+  " and ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Beta]\_1\)]],
+  " can be calculated from ",
+  StyleBox["eq22c",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  "[[2]]."
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[TextData[
+"Alternatively, instead of including the homogeneous solution at each order \
+and consider the arbitrary constants to be independent of \[Epsilon] as done \
+above, one may disregard the homogeneous solution at all orders except the \
+first and consider the arbitrary constants to depend on \[Epsilon] in \
+imposing the initial conditions. With the latter approach, the solution to \
+first order can be rewritten as"], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(sol /. {a\_0 -> a, \[Beta]\_0 -> \[Beta], a\_1 -> 0} // ExpandAll\)], 
+  "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \(u[t] == 
+      a\ Cos[t + \[Beta]] + 1\/32\ a\^3\ \[Epsilon]\ Cos[3\ t + 3\ \[Beta]] - 
+        3\/8\ a\^3\ t\ \[Epsilon]\ Sin[t + \[Beta]]\)], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "We note that the correction term ",
+  Cell[BoxData[
+      \(TraditionalForm
+      \`\(1\/32\) \(a\^3\) \[Epsilon]\ Cos[3  t + 3  \[Beta]] - 
+        \(3\/8\) \(a\^3\) t\ \[Epsilon]\ Sin[t + \[Beta]]\)]],
+  " is small compared to the principal term ",
+  Cell[BoxData[
+      \(TraditionalForm\`a\ Cos[t + \[Beta]]\)]],
+  ", as it is supposed to be, only when ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Epsilon]\ t\)]],
+  " is small compared with unity. When ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Epsilon]\ t\)]],
+  " is ",
+  Cell[BoxData[
+      \(TraditionalForm\`O(1)\)]],
+  ", the term that is supposed to be a small correction becomes the same \
+order as the principal term. Moreover, when ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Epsilon]\ t > O(1)\)]],
+  ", the \"small-correction\" term becomes larger than the principal term. \
+Hence, the above obtained straightforward expansion is valid only for times \
+such that ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Epsilon]\ t < O(1)\)]],
+  "; that is, ",
+  Cell[BoxData[
+      \(TraditionalForm\`t < O(\[Epsilon]\^\(-1\))\)]],
+  ". Consequently, we say such expansions are nonuniform or breakdown for \
+long times and we call them ",
+  StyleBox["pedestrian  ",
+    FontFamily->"Arial",
+    FontColor->RGBColor[0, 0, 1]],
+  StyleBox["or",
+    FontFamily->"Arial"],
+  StyleBox[" naive expansions",
+    FontFamily->"Arial",
+    FontColor->RGBColor[0, 0, 1]],
+  ". The reason for the breakdown of the above expansion is the presence of \
+the term ",
+  Cell[BoxData[
+      \(TraditionalForm\`t\ Sin[t + \[Beta]]\)]],
+  ", a product of algebraic and circular terms. Such terms are called \
+mixed-secular terms. In subsequent sections, we implement four methods that \
+avoid secular terms, and hence yield uniform expansions."
+}], "Text",
+  CellMargins->{{13, Inherited}, {Inherited, Inherited}},
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["2.3 The Lindstedt-Poincar\[EAcute] Technique", "Section",
+  CellMargins->{{Inherited, 17.4375}, {Inherited, Inherited}},
+  Evaluatable->False,
+  TextAlignment->Left,
+  TextJustification->1,
+  AspectRatioFixed->True,
+  CellTags->{"ChapterTwo", "ChapterTwo.2", "ChapterTwo.2.1"}],
+
+Cell["\<\
+The breakdown in the straightforward expansion is due to its failure to \
+account for the nonlinear dependence of the frequency of the system on the \
+nonlinearity. A number of techniques that yield uniformly valid expansions \
+have been developed. Four of these techniques are discussed in this chapter. \
+We start with the Lindstedt-Poincar\[EAcute] technique in this section.\
+\>", "Text",
+  CellMargins->{{12, Inherited}, {Inherited, Inherited}},
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[TextData[{
+  "To account for the dependence of the frequency \[Omega] of the system on \
+the nonlinearity, we explicitly exhibit \[Omega] in the governing \
+differential equation. To this end, we introduce the transformation ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Tau] = \[Omega]\ t\)]],
+  ", where \[Omega] is a constant that depends on \[Epsilon], and obtain"
+}], "Text",
+  CellMargins->{{12, Inherited}, {Inherited, Inherited}},
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{"DuffingEq", "=", 
+        RowBox[{
+          RowBox[{
+            RowBox[{
+              SuperscriptBox["u", "\[DoublePrime]",
+                MultilineFunction->None], "[", "t", "]"}], "+", \(u[t]\), 
+            "+", \(\[Epsilon]\ u[t]\^3\)}], "==", "0"}]}], ";", "\n", 
+      \(eq23a = 
+        \(DuffingEq /. u -> \((u[\[Omega]\ #]\ &)\)\) /. 
+          t -> \[Tau]/\[Omega]\)}]], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{\(u[\[Tau]]\), "+", \(\[Epsilon]\ u[\[Tau]]\^3\), "+", 
+        RowBox[{\(\[Omega]\^2\), " ", 
+          RowBox[{
+            SuperscriptBox["u", "\[DoublePrime]",
+              MultilineFunction->None], "[", "\[Tau]", "]"}]}]}], "==", 
+      "0"}]], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "To determine a uniform expansion of the solution of ",
+  StyleBox["eq23a",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  ", we expand both ",
+  Cell[BoxData[
+      \(TraditionalForm\`u[\[Tau]; \[Epsilon]]\)]],
+  " and ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Omega][\[Epsilon]]\)]],
+  " in powers of ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Epsilon]\)]],
+  " using ",
+  StyleBox["uExpRule[k]",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " and  "
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \(omgRule[maxOrder_] := 
+      \[Omega] -> 
+        \[Omega]\_0 + Sum[\[Epsilon]\^i\ \[Omega]\_i, {i, maxOrder}]\)], 
+  "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[TextData[{
+  "where ",
+  Cell[BoxData[
+      \(\[Omega]\_0\)]],
+  " is the linear natural frequency of the system. In the present case, the \
+linear natural frequency was normalized to unity. Hence, we set ",
+  Cell[BoxData[
+      \(\[Omega]\_0 = 1\)]],
+  ". The corrections to the linear frequency are determined in the course of \
+the analysis by requiring the expansion of ",
+  Cell[BoxData[
+      \(TraditionalForm\`u\)]],
+  " to be uniform for all ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Tau]\)]],
+  ". Next, we show how one can determine ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Omega]\_1\)]],
+  "."
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[TextData[{
+  "Substituting the expansions of ",
+  Cell[BoxData[
+      \(TraditionalForm\`u\)]],
+  " and ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Omega]\)]],
+  " into ",
+  StyleBox["eq23a",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  ", using the fact that ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Omega]\_0 = 1\)]],
+  ", setting ",
+  StyleBox["maxOrder",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  Cell[BoxData[
+      \(TraditionalForm\`\( = 1\)\)]],
+  ", expanding the result, and discarding terms of order higher than \
+\[Epsilon], we obtain"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(eq23b = 
+      \(ExpandAll[\(eq23a /. uExpRule[1]\) /. omgRule[1]] /. 
+          \[Omega]\_0 -> 1\) /. \[Epsilon]\^\(n_ /; n > 1\) -> 0\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{
+      \(u\_0[\[Tau]]\), "+", \(\[Epsilon]\ u\_0[\[Tau]]\^3\), "+", 
+        \(\[Epsilon]\ u\_1[\[Tau]]\), "+", 
+        RowBox[{
+          SubsuperscriptBox["u", "0", "\[DoublePrime]",
+            MultilineFunction->None], "[", "\[Tau]", "]"}], "+", 
+        RowBox[{"2", " ", "\[Epsilon]", " ", \(\[Omega]\_1\), " ", 
+          RowBox[{
+            SubsuperscriptBox["u", "0", "\[DoublePrime]",
+              MultilineFunction->None], "[", "\[Tau]", "]"}]}], "+", 
+        RowBox[{"\[Epsilon]", " ", 
+          RowBox[{
+            SubsuperscriptBox["u", "1", "\[DoublePrime]",
+              MultilineFunction->None], "[", "\[Tau]", "]"}]}]}], "==", 
+      "0"}]], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "Equating coefficients of like powers of ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Epsilon]\)]],
+  " on both sides of ",
+  StyleBox["eq23b",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " yields"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(eqEps = CoefficientList[eq23b[\([1]\)], \[Epsilon]] == 0 // Thread\)], 
+  "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        RowBox[{
+          RowBox[{\(u\_0[\[Tau]]\), "+", 
+            RowBox[{
+              SubsuperscriptBox["u", "0", "\[DoublePrime]",
+                MultilineFunction->None], "[", "\[Tau]", "]"}]}], "==", 
+          "0"}], ",", 
+        RowBox[{
+          RowBox[{\(u\_0[\[Tau]]\^3\), "+", \(u\_1[\[Tau]]\), "+", 
+            RowBox[{"2", " ", \(\[Omega]\_1\), " ", 
+              RowBox[{
+                SubsuperscriptBox["u", "0", "\[DoublePrime]",
+                  MultilineFunction->None], "[", "\[Tau]", "]"}]}], "+", 
+            RowBox[{
+              SubsuperscriptBox["u", "1", "\[DoublePrime]",
+                MultilineFunction->None], "[", "\[Tau]", "]"}]}], "==", 
+          "0"}]}], "}"}]], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "The general solution of ",
+  StyleBox["eqEps[[1]]",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  ", the zeroth-order equation, can be expressed in polar form as"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(sol0 = 
+      \(DSolve[{eqEps[\([1]\)], u\_0[0] == a\ Cos[\[Beta]], 
+            \(u\_0\^\[Prime]\)[0] == \(-a\)\ Sin[\[Beta]]}, u\_0, \[Tau]]\)[
+        \([1]\)]\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \({u\_0 \[Rule] 
+        \((a\ Cos[\[Beta]]\ Cos[#1] - a\ Sin[\[Beta]]\ Sin[#1]&)\)}\)], 
+  "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "where ",
+  Cell[BoxData[
+      \(TraditionalForm\`a\)]],
+  " and ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Beta]\)]],
+  " are constants. We have expressed ",
+  Cell[BoxData[
+      \(TraditionalForm\`u\_0\)]],
+  " as a pure function so that we can evaluate its derivatives in the \
+higher-order problems."
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[TextData[{
+  "Substituting for ",
+  Cell[BoxData[
+      \(TraditionalForm\`u\_0[\[Tau]]\)]],
+  " in ",
+  StyleBox["eqEps[[2]]",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  ", the first-order equation, yields"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(order1Eq = eqEps[\([2]\)] /. sol0 // Simplify\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{
+      \(a\^3\ Cos[\[Beta] + \[Tau]]\^3\), "-", 
+        \(2\ a\ Cos[\[Beta] + \[Tau]]\ \[Omega]\_1\), "+", \(u\_1[\[Tau]]\), 
+        "+", 
+        RowBox[{
+          SubsuperscriptBox["u", "1", "\[DoublePrime]",
+            MultilineFunction->None], "[", "\[Tau]", "]"}]}], "==", "0"}]], 
+  "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell["whose particular solution is", "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(u1pSol = 
+      \(DSolve[order1Eq, u\_1[\[Tau]], \[Tau]]\)[\([1]\)] /. C[_] -> 0 // 
+        Simplify\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \({u\_1[\[Tau]] \[Rule] 
+        1\/32\ a\ 
+          \((a\^2\ \((
+                  \(-6\)\ Cos[\[Beta] + \[Tau]] + 
+                    Cos[3\ \((\[Beta] + \[Tau])\)] - 
+                    12\ \[Tau]\ Sin[\[Beta] + \[Tau]])\) + 
+              16\ \((Cos[\[Beta] + \[Tau]] + 2\ \[Tau]\ Sin[\[Beta] + \[Tau]])
+                  \)\ \[Omega]\_1)\)}\)], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "It is clear that ",
+  StyleBox["u1pSol",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " contains a mixed-secular term, which makes the expansion nonuniform. In \
+contrast with the straightforward expansion, where the secular term cannot be \
+annihilated unless ",
+  StyleBox["u",
+    FontSlant->"Italic"],
+  " is trivial, in this case, we can choose the parameter ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Omega]\_1\)]],
+  " to eliminate the secular term according to"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(omg1Rule = 
+      \(Solve[Coefficient[u1pSol[\([1, 2]\)], Sin[\[Beta] + \[Tau]]] == 0, 
+          \[Omega]\_1]\)[\([1]\)]\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \({\[Omega]\_1 \[Rule] \(3\ a\^2\)\/8}\)], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "Substituting for ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Omega]\_1\)]],
+  " into ",
+  StyleBox["u1pSol",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  ", we have"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(sol1 = u1pSol /. omg1Rule // Simplify\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \({u\_1[\[Tau]] \[Rule] 1\/32\ a\^3\ Cos[3\ \((\[Beta] + \[Tau])\)]}\)], 
+  "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "We note that, to determine the condition for the elimination of the \
+secular term from ",
+  Cell[BoxData[
+      \(TraditionalForm\`u\_1\)]],
+  ", we do not need to determine the particular solution first as done above. \
+Instead, we only need to inspect ",
+  StyleBox["order1Eq",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " and choose ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Omega]\_1\)]],
+  " so that the coefficient of ",
+  Cell[BoxData[
+      \(TraditionalForm\`Cos[\[Beta] + \[Tau]]\)]],
+  ", which produces secular terms in ",
+  Cell[BoxData[
+      \(TraditionalForm\`u\_1\)]],
+  ", is equal to zero. To this end, we calculate the nonhomogeneous part of ",
+  
+  StyleBox["order1Eq",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " and simplify the result using trigonometric identities as"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(expr23a = order1Eq[\([1]\)] /. u\_1 -> \((0&)\) // TrigReduce\)], 
+  "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \(1\/4\ 
+      \((3\ a\^3\ Cos[\[Beta] + \[Tau]] + a\^3\ Cos[3\ \[Beta] + 3\ \[Tau]] - 
+          8\ a\ Cos[\[Beta] + \[Tau]]\ \[Omega]\_1)\)\)], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "Next, we choose ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Omega]\_1\)]],
+  " to annihilate the term in ",
+  StyleBox["expr23a",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " that produces secular terms, namely ",
+  Cell[BoxData[
+      \(TraditionalForm\`Cos[\[Beta] + \[Tau]]\)]],
+  ", and obtain"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(\(Solve[Coefficient[expr23a, Cos[\[Beta] + \[Tau]]] == 0, \[Omega]\_1]
+        \)[\([1]\)]\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \({\[Omega]\_1 \[Rule] \(3\ a\^2\)\/8}\)], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "Substituting ",
+  StyleBox["sol0",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " and ",
+  StyleBox["sol1",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " into ",
+  StyleBox["uExpRule[1]",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " yields"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(u[\[Tau]] = 
+      \((\(\(u[\[Tau]] /. uExpRule[1]\) /. sol0\) /. sol1 // Simplify)\)\)], 
+  "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \(a\ Cos[\[Beta] + \[Tau]] + 
+      1\/32\ a\^3\ \[Epsilon]\ Cos[3\ \((\[Beta] + \[Tau])\)]\)], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "Replacing ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Tau]\)]],
+  " with ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Omega]\ t\)]],
+  ", substituting for ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Omega]\)]],
+  ", using the fact that ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Omega]\_0 = 1\)]],
+  ", and expanding the arguments of the trigonometric functions, we obtain"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(solLP = 
+      u[t] == \((
+          \(\(\(\(u[\[Tau]] /. \[Tau] -> \[Omega]\ t\) /. omgRule[1]\) /. 
+                omg1Rule\) /. \[Omega]\_0 -> 1\) /. 
+            f_[arg_] :> f[arg // Expand])\)\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \(u[t] == 
+      a\ Cos[t + \[Beta] + 3\/8\ a\^2\ t\ \[Epsilon]] + 
+        1\/32\ a\^3\ \[Epsilon]\ 
+          Cos[3\ t + 3\ \[Beta] + 9\/8\ a\^2\ t\ \[Epsilon]]\)], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "Clearly, the expansion ",
+  StyleBox["solLP",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " is free of secular terms and the correction term ",
+  Cell[BoxData[
+      \(TraditionalForm
+      \`\(1\/32\) a\^3\ \[Epsilon]\ 
+        Cos[3  t + 3  \[Beta] + \(9\/8\) \[Epsilon]\ a\^2\ t]\)]],
+  " is small compared with the principal term ",
+  Cell[BoxData[
+      \(TraditionalForm
+      \`a\ Cos[t + \[Beta] + \(3\/8\) \[Epsilon]\ a\^2\ t]\)]],
+  " for all ",
+  Cell[BoxData[
+      \(TraditionalForm\`t\)]],
+  " and hence it is uniformly valid."
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["2.4 The Method of Multiple Scales", "Section",
+  CellMargins->{{Inherited, 17.4375}, {Inherited, Inherited}},
+  Evaluatable->False,
+  TextAlignment->Left,
+  TextJustification->1,
+  AspectRatioFixed->True,
+  CellTags->{"ChapterTwo", "ChapterTwo.2", "ChapterTwo.2.1"}],
+
+Cell[TextData[{
+  "We note from ",
+  StyleBox["solLP",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " that the functional dependence of ",
+  Cell[BoxData[
+      \(TraditionalForm\`u\)]],
+  " on ",
+  Cell[BoxData[
+      \(TraditionalForm\`t\)]],
+  " and ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Epsilon]\)]],
+  " is not disjoint. In fact, ",
+  Cell[BoxData[
+      \(TraditionalForm\`u\)]],
+  StyleBox[" ",
+    FontSlant->"Italic"],
+  "depends on the combination ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Epsilon]\ t\)]],
+  " as well as on the individual ",
+  Cell[BoxData[
+      \(TraditionalForm\`t\)]],
+  " and ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Epsilon]\)]],
+  ". Carrying out the expansion to higher order, we find that ",
+  Cell[BoxData[
+      \(TraditionalForm\`u\)]],
+  StyleBox[" ",
+    FontSlant->"Italic"],
+  "depends on the combinations ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Epsilon]\ t\)]],
+  ",",
+  Cell[BoxData[
+      \(TraditionalForm\`\(\ \(\(\[Epsilon]\^2\) t, \)\)\)]],
+  Cell[BoxData[
+      \(TraditionalForm\`\(\ \(\[Epsilon]\^3\) t\)\)]],
+  ",\[CenterEllipsis] as well as on the individual ",
+  Cell[BoxData[
+      \(TraditionalForm\`t\)]],
+  " and ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Epsilon]\)]],
+  ". Hence, ",
+  Cell[BoxData[
+      \(TraditionalForm\`u = u\)]],
+  "(",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Epsilon]\ t\)]],
+  ",",
+  Cell[BoxData[
+      \(TraditionalForm\`\(\ \(\(\[Epsilon]\^2\) t, \)\)\)]],
+  Cell[BoxData[
+      \(TraditionalForm\`\(\ \(\[Epsilon]\^3\) t\)\)]],
+  ",\[CenterEllipsis]; \[Epsilon]). For small \[Epsilon], ",
+  Cell[BoxData[
+      \(TraditionalForm\`T\_n = \[Epsilon]\^n\ t\)]],
+  ", for ",
+  Cell[BoxData[
+      \(TraditionalForm\`n = 1, 2, 3, \)]],
+  "\[CenterEllipsis], represent different time scales. For example, if ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Epsilon] = 1\/60\)]],
+  ", variations on the time scales ",
+  Cell[BoxData[
+      \(TraditionalForm\`T\_0\)]],
+  ", ",
+  Cell[BoxData[
+      \(TraditionalForm\`T\_1\)]],
+  ", and ",
+  Cell[BoxData[
+      \(TraditionalForm\`T\_2\)]],
+  " can be observed, respectively, on the second, minute, and hour arms of a \
+watch. Thus, ",
+  Cell[BoxData[
+      \(TraditionalForm\`T\_0\)]],
+  " represents a fast time scale, ",
+  Cell[BoxData[
+      \(TraditionalForm\`T\_1\)]],
+  " represents a slower time scale, ",
+  Cell[BoxData[
+      \(TraditionalForm\`T\_2\)]],
+  " represents an even slower time scale, and so on. Since the dependence of \
+",
+  StyleBox["u",
+    FontSlant->"Italic"],
+  " on ",
+  StyleBox["t",
+    FontSlant->"Italic"],
+  " and \[Epsilon] occurs on different time scales, we imagine that we have a \
+watch and attempt to observe the behavior of ",
+  StyleBox["u",
+    FontSlant->"Italic"],
+  " using the different scales of the watch. Therefore, instead of \
+determining ",
+  StyleBox["u",
+    FontSlant->"Italic"],
+  " as a function of ",
+  StyleBox["t",
+    FontSlant->"Italic"],
+  ", we determine ",
+  StyleBox["u",
+    FontSlant->"Italic"],
+  " as a function of ",
+  Cell[BoxData[
+      \(TraditionalForm\`T\_0, T\_1, T\_2\)]],
+  ", \[CenterEllipsis]. To this end, we change the independent variable ",
+  Cell[BoxData[
+      \(TraditionalForm\`t\)]],
+  " in the governing equation from ",
+  StyleBox["t",
+    FontSlant->"Italic"],
+  " to ",
+  Cell[BoxData[
+      \(TraditionalForm\`T\_0, T\_1, T\_2\)]],
+  ", \[CenterEllipsis] , which are symbolized by"
+}], "Text",
+  CellMargins->{{12, Inherited}, {Inherited, Inherited}},
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{"Symbolize", "[", 
+        TagBox[\(T\_0\),
+          NotationBoxTag,
+          Editable->True], "]"}], ";", 
+      RowBox[{"Symbolize", "[", 
+        TagBox[\(T\_1\),
+          NotationBoxTag,
+          Editable->True], "]"}], ";", 
+      RowBox[{"Symbolize", "[", 
+        TagBox[\(T\_2\),
+          NotationBoxTag,
+          Editable->True], "]"}], ";"}]], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \(\(timeScales = {T\_0, T\_1, T\_2}; \)\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell["We define the derivative operators as", "Text",
+  CellMargins->{{12, Inherited}, {Inherited, Inherited}},
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \(\(dt[1]\)[expr_] := 
+      Sum[\[Epsilon]\^i\ D[expr, timeScales[\([i + 1]\)]], {i, 0, maxOrder}]; 
+    \ \(dt[2]\)[expr_] := 
+      \((\(dt[1]\)[\(dt[1]\)[expr]] // Expand)\) /. 
+        \[Epsilon]\^\(i_ /; i > maxOrder\) -> 0; \)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[TextData[{
+  "and treat the time scales ",
+  Cell[BoxData[
+      \(TraditionalForm\`T\_0\)]],
+  ", ",
+  Cell[BoxData[
+      \(TraditionalForm\`T\_1\)]],
+  ", and ",
+  Cell[BoxData[
+      \(TraditionalForm\`T\_2\)]],
+  " as independent variables."
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[TextData[{
+  "Next, we use the method of multiple scales to determine an approximate \
+solution for the ",
+  StyleBox["DuffingEq",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  ". In Section 2.4.1, we treat the ",
+  StyleBox["DuffingEq",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " in its second-order form; in Section 2.4.2, we transform it first into a \
+system of two real-valued equations; and in Section 2.4.3, we transform it \
+first into a single complex-valued equation."
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell["2.4.1 Second-Order Real-Valued System", "Subsection",
+  CellMargins->{{Inherited, 17.4375}, {Inherited, Inherited}},
+  Evaluatable->False,
+  TextAlignment->Left,
+  TextJustification->1,
+  AspectRatioFixed->True,
+  CellTags->{"ChapterTwo", "ChapterTwo.2", "ChapterTwo.2.1"}],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{"DuffingEq", "=", 
+        RowBox[{
+          RowBox[{
+            RowBox[{
+              SuperscriptBox["u", "\[DoublePrime]",
+                MultilineFunction->None], "[", "t", "]"}], "+", \(u[t]\), 
+            "+", \(\[Epsilon]\ u[t]\^3\)}], "==", "0"}]}], ";"}]], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[TextData[{
+  "To determine a first-order uniform expansion of the solution of the \
+Duffing equation, we use the two time scales ",
+  Cell[BoxData[
+      \(TraditionalForm\`T\_0\)]],
+  " and ",
+  Cell[BoxData[
+      \(TraditionalForm\`T\_1\)]],
+  " and hence let"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \(\(maxOrder = 1; \)\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[TextData[{
+  "Expressing the time derivative in ",
+  StyleBox["DuffingEq",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " in terms of the two time scales ",
+  Cell[BoxData[
+      \(TraditionalForm\`T\_0\)]],
+  " and ",
+  Cell[BoxData[
+      \(TraditionalForm\`T\_1\)]],
+  ", we have"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(eq241a = 
+      DuffingEq /. {u[t] -> u[T\_0, T\_1], 
+          \(\(Derivative[n_]\)[u]\)[t] -> \(dt[n]\)[u[T\_0, T\_1]]}\)], 
+  "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{\(u[T\_0, T\_1]\), "+", \(\[Epsilon]\ u[T\_0, T\_1]\^3\), "+", 
+        RowBox[{"2", " ", "\[Epsilon]", " ", 
+          RowBox[{
+            SuperscriptBox["u", 
+              TagBox[\((1, 1)\),
+                Derivative],
+              MultilineFunction->None], "[", \(T\_0, T\_1\), "]"}]}], "+", 
+        RowBox[{
+          SuperscriptBox["u", 
+            TagBox[\((2, 0)\),
+              Derivative],
+            MultilineFunction->None], "[", \(T\_0, T\_1\), "]"}]}], "==", 
+      "0"}]], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell["\<\
+Consequently, we have replaced the original ordinary-differential equation by \
+a partial-differential equation, and it appears that, as a result, we have \
+complicated the problem. This is partially true, but experience with this \
+method has shown that the disadvantages of introducing this complication are \
+far outweighed by the advantages. Not only does this method provide a uniform \
+expansion, but it also provides all the various nonlinear resonance \
+phenomena, as we shall see in subsequent chapters.\
+\>", "Text",
+  CellMargins->{{12, Inherited}, {Inherited, Inherited}},
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[TextData[{
+  "We seek a uniform second-order expansion of the solution of ",
+  StyleBox["eq241a",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " in the form"
+}], "Text",
+  CellMargins->{{12, Inherited}, {Inherited, Inherited}},
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \(\(solRule = 
+      u -> \((Sum[\[Epsilon]\^i\ u\_i[#1, #2], {i, 0, maxOrder}]\ &)\); 
+    \)\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[TextData[{
+  "Substituting this expansion into ",
+  StyleBox["eq241a",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  ", expanding the result, and discarding terms of order higher than \
+\[Epsilon], we obtain"
+}], "Text",
+  CellMargins->{{12, Inherited}, {Inherited, Inherited}},
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(eq241b = 
+      \((eq241a /. solRule // ExpandAll)\) /. 
+        \[Epsilon]\^\(n_ /; n > maxOrder\) -> 0\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{
+      \(u\_0[T\_0, T\_1]\), "+", \(\[Epsilon]\ u\_0[T\_0, T\_1]\^3\), "+", 
+        \(\[Epsilon]\ u\_1[T\_0, T\_1]\), "+", 
+        RowBox[{"2", " ", "\[Epsilon]", " ", 
+          RowBox[{
+            SubsuperscriptBox["u", "0", 
+              TagBox[\((1, 1)\),
+                Derivative],
+              MultilineFunction->None], "[", \(T\_0, T\_1\), "]"}]}], "+", 
+        RowBox[{
+          SubsuperscriptBox["u", "0", 
+            TagBox[\((2, 0)\),
+              Derivative],
+            MultilineFunction->None], "[", \(T\_0, T\_1\), "]"}], "+", 
+        RowBox[{"\[Epsilon]", " ", 
+          RowBox[{
+            SubsuperscriptBox["u", "1", 
+              TagBox[\((2, 0)\),
+                Derivative],
+              MultilineFunction->None], "[", \(T\_0, T\_1\), "]"}]}]}], "==", 
+      "0"}]], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "Equating coefficients of like powers of \[Epsilon] in ",
+  StyleBox["eq241b",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " yields"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(eqEps = CoefficientList[eq241b[\([1]\)], \[Epsilon]] == 0 // Thread\)], 
+  "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        RowBox[{
+          RowBox[{\(u\_0[T\_0, T\_1]\), "+", 
+            RowBox[{
+              SubsuperscriptBox["u", "0", 
+                TagBox[\((2, 0)\),
+                  Derivative],
+                MultilineFunction->None], "[", \(T\_0, T\_1\), "]"}]}], "==", 
+          "0"}], ",", 
+        RowBox[{
+          RowBox[{\(u\_0[T\_0, T\_1]\^3\), "+", \(u\_1[T\_0, T\_1]\), "+", 
+            RowBox[{"2", " ", 
+              RowBox[{
+                SubsuperscriptBox["u", "0", 
+                  TagBox[\((1, 1)\),
+                    Derivative],
+                  MultilineFunction->None], "[", \(T\_0, T\_1\), "]"}]}], 
+            "+", 
+            RowBox[{
+              SubsuperscriptBox["u", "1", 
+                TagBox[\((2, 0)\),
+                  Derivative],
+                MultilineFunction->None], "[", \(T\_0, T\_1\), "]"}]}], "==", 
+          "0"}]}], "}"}]], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "The general solution of ",
+  StyleBox["eqEps",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  "[[1]] can be written in a pure function form as"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \(\(sol0 = u\_0 -> \((a[#2]\ Cos[#1 + \[Beta][#2]]\ &)\); \)\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[TextData[{
+  "where #1 stands for the scale ",
+  Cell[BoxData[
+      \(TraditionalForm\`T\_0\)]],
+  " and #2 stands for the scale ",
+  Cell[BoxData[
+      \(TraditionalForm\`T\_1\)]],
+  ". The functional dependence of ",
+  StyleBox["a",
+    FontSlant->"Italic"],
+  " and \[Beta] on ",
+  Cell[BoxData[
+      \(TraditionalForm\`T\_1\)]],
+  " is not known at this level of approximation; it is determined at \
+subsequent levels of approximation by eliminating the secular terms."
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[TextData[{
+  "Substituting ",
+  StyleBox["sol0",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " into ",
+  StyleBox["eqEps",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  "[[2]] and moving the nonhomogeneous parts to the right-hand side of the \
+resulting equation yields"
+}], "Text",
+  CellMargins->{{12, Inherited}, {Inherited, Inherited}},
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(eq241c = 
+      \(\((eqEps[\([1, 1]\)] /. u\_0 -> u\_1)\) - #\ &\)\ /@\ 
+        Reverse[eqEps[\([2]\)] /. sol0 // Simplify]\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{\(u\_1[T\_0, T\_1]\), "+", 
+        RowBox[{
+          SubsuperscriptBox["u", "1", 
+            TagBox[\((2, 0)\),
+              Derivative],
+            MultilineFunction->None], "[", \(T\_0, T\_1\), "]"}]}], "==", 
+      RowBox[{\(\(-a[T\_1]\^3\)\ Cos[T\_0 + \[Beta][T\_1]]\^3\), "+", 
+        RowBox[{"2", " ", \(Sin[T\_0 + \[Beta][T\_1]]\), " ", 
+          RowBox[{
+            SuperscriptBox["a", "\[Prime]",
+              MultilineFunction->None], "[", \(T\_1\), "]"}]}], "+", 
+        RowBox[{
+        "2", " ", \(a[T\_1]\), " ", \(Cos[T\_0 + \[Beta][T\_1]]\), " ", 
+          RowBox[{
+            SuperscriptBox["\[Beta]", "\[Prime]",
+              MultilineFunction->None], "[", \(T\_1\), "]"}]}]}]}]], "Output",\
+
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "Next, we expand the right-hand side of ",
+  StyleBox["eq241c",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " in a Fourier series using trigonometric identities and obtain"
+}], "Text",
+  CellMargins->{{12, Inherited}, {Inherited, Inherited}},
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(eq241c[\([2]\)] = \(eq241c[\([2]\)] // TrigFactor\) // Expand\)], 
+  "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{
+    \(\(-\(3\/4\)\)\ a[T\_1]\^3\ Cos[T\_0 + \[Beta][T\_1]]\), "-", 
+      \(1\/4\ a[T\_1]\^3\ Cos[3\ T\_0 + 3\ \[Beta][T\_1]]\), "+", 
+      RowBox[{"2", " ", \(Sin[T\_0 + \[Beta][T\_1]]\), " ", 
+        RowBox[{
+          SuperscriptBox["a", "\[Prime]",
+            MultilineFunction->None], "[", \(T\_1\), "]"}]}], "+", 
+      RowBox[{
+      "2", " ", \(a[T\_1]\), " ", \(Cos[T\_0 + \[Beta][T\_1]]\), " ", 
+        RowBox[{
+          SuperscriptBox["\[Beta]", "\[Prime]",
+            MultilineFunction->None], "[", \(T\_1\), "]"}]}]}]], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "To produce a uniform expansion, we eliminate the terms that produce \
+secular terms from ",
+  StyleBox["eq241c",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  "[[2]]; that is, we choose ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(a\_1\^\[Prime]\)[T\_1]\)]],
+  " and ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(\[Beta]\^\[Prime]\)[T\_1]\)]],
+  " to annihilate each of the coefficients of ",
+  Cell[BoxData[
+      \(TraditionalForm\`Sin[T\_0 + \[Beta][T\_1]]\)]],
+  " and ",
+  Cell[BoxData[
+      \(TraditionalForm\`Cos[T\_0 + \[Beta][T\_1]]\)]],
+  ". The result is"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(eq241d = 
+      \(Coefficient[eq241c[\([2]\)], #] == 0\ &\)\ /@
+        \ {Sin[T\_0 + \[Beta][T\_1]], Cos[T\_0 + \[Beta][T\_1]]}\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        RowBox[{
+          RowBox[{"2", " ", 
+            RowBox[{
+              SuperscriptBox["a", "\[Prime]",
+                MultilineFunction->None], "[", \(T\_1\), "]"}]}], "==", 
+          "0"}], ",", 
+        RowBox[{
+          RowBox[{\(\(-\(3\/4\)\)\ a[T\_1]\^3\), "+", 
+            RowBox[{"2", " ", \(a[T\_1]\), " ", 
+              RowBox[{
+                SuperscriptBox["\[Beta]", "\[Prime]",
+                  MultilineFunction->None], "[", \(T\_1\), "]"}]}]}], "==", 
+          "0"}]}], "}"}]], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "Solving ",
+  StyleBox["eq241d",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " for ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(a\_1\^\[Prime]\)[T\_1]\)]],
+  " and ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(\[Beta]\^\[Prime]\)[T\_1]\)]],
+  " when ",
+  Cell[BoxData[
+      \(TraditionalForm\`a[T\_1] \[NotEqual] 0\)]],
+  " yields"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    RowBox[{"SCond", "=", 
+      RowBox[{
+        RowBox[{"Solve", "[", 
+          RowBox[{"eq241d", ",", 
+            RowBox[{"{", 
+              RowBox[{
+                RowBox[{
+                  SuperscriptBox["a", "\[Prime]",
+                    MultilineFunction->None], "[", \(T\_1\), "]"}], ",", 
+                RowBox[{
+                  SuperscriptBox["\[Beta]", "\[Prime]",
+                    MultilineFunction->None], "[", \(T\_1\), "]"}]}], 
+              "}"}]}], "]"}], "[", \([1]\), "]"}]}]], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        RowBox[{
+          RowBox[{
+            SuperscriptBox["a", "\[Prime]",
+              MultilineFunction->None], "[", \(T\_1\), "]"}], "\[Rule]", 
+          "0"}], ",", 
+        RowBox[{
+          RowBox[{
+            SuperscriptBox["\[Beta]", "\[Prime]",
+              MultilineFunction->None], "[", \(T\_1\), "]"}], "\[Rule]", 
+          \(3\/8\ a[T\_1]\^2\)}]}], "}"}]], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "The solution of ",
+  StyleBox["SCond",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  "[[1]] is ",
+  Cell[BoxData[
+      \(TraditionalForm\`a = \(a\_0 = constant\)\)]],
+  ". Then, the solution of ",
+  StyleBox["SCond",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  "[[2]] is"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(betaRule = 
+      \(DSolve[eq241d[\([2]\)] /. a[T\_1] -> a\_0, \[Beta][T\_1], T\_1]\)[
+          \([1]\)] /. C[1] -> \[Beta]\_0\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \({\[Beta][T\_1] \[Rule] 3\/8\ T\_1\ a\_0\%2 + \[Beta]\_0}\)], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "With the above solvability conditions, ",
+  StyleBox["eq241c",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " becomes"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(eq241e = eq241c /. SCond\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{\(u\_1[T\_0, T\_1]\), "+", 
+        RowBox[{
+          SubsuperscriptBox["u", "1", 
+            TagBox[\((2, 0)\),
+              Derivative],
+            MultilineFunction->None], "[", \(T\_0, T\_1\), "]"}]}], "==", 
+      \(\(-\(1\/4\)\)\ a[T\_1]\^3\ Cos[3\ T\_0 + 3\ \[Beta][T\_1]]\)}]], 
+  "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "The particular solution of ",
+  StyleBox["eq241e",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " can be obtained as"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(sol1 = 
+      \(DSolve[eq241e, u\_1[T\_0, T\_1], {T\_0, T\_1}]\)[\([1]\)] /. 
+          C[_] -> \((0&)\) // Simplify\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \({u\_1[T\_0, T\_1] \[Rule] 
+        1\/32\ a[T\_1]\^3\ Cos[3\ \((T\_0 + \[Beta][T\_1])\)]}\)], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(eq241f = 
+      u[T\_0, T\_1] == 
+        \((\(\(\(\(u[T\_0, T\_1] /. solRule\) /. sol0\) /. sol1\) /. 
+              a[T\_1] -> a\_0\) /. betaRule)\)\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \(u[T\_0, T\_1] == 
+      Cos[T\_0 + 3\/8\ T\_1\ a\_0\%2 + \[Beta]\_0]\ a\_0 + 
+        1\/32\ \[Epsilon]\ 
+          Cos[3\ \((T\_0 + 3\/8\ T\_1\ a\_0\%2 + \[Beta]\_0)\)]\ a\_0\%3\)], 
+  "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "where ",
+  Cell[BoxData[
+      \(TraditionalForm\`a\_0\)]],
+  " and ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Beta]\_0\)]],
+  " are constants to within the order of the error indicated. In terms of the \
+original variable ",
+  StyleBox["t",
+    FontSlant->"Italic"],
+  ", ",
+  StyleBox["eq241f",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " can be expressed as"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(u[t] == eq241f[\([2]\)] /. {T\_0 -> t, T\_1 -> \[Epsilon]\ t}\)], 
+  "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \(u[t] == 
+      Cos[t + 3\/8\ t\ \[Epsilon]\ a\_0\%2 + \[Beta]\_0]\ a\_0 + 
+        1\/32\ \[Epsilon]\ 
+          Cos[3\ \((t + 3\/8\ t\ \[Epsilon]\ a\_0\%2 + \[Beta]\_0)\)]\ 
+          a\_0\%3\)], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell["\<\
+in agreement with the expansion obtained by using the Lindstedt-Poincar\
+\[EAcute] technique.\
+\>", "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[TextData[{
+  "In the higher-order approximations, we include the scales ",
+  Cell[BoxData[
+      \(TraditionalForm\`T\_0, T\_1, \ \[CenterEllipsis], T\_N\)]],
+  " but we do not include the term ",
+  Cell[BoxData[
+      \(TraditionalForm\`O[\[Epsilon]\^N]\)]],
+  " in an ",
+  StyleBox["N ",
+    FontSlant->"Italic"],
+  "th-order expansion."
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[TextData[{
+  "Before closing this section, we present an alternate representation of the \
+solutions of the perturbation equations. Instead of the real-valued form ",
+  StyleBox["sol0",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  ", we represent the solution of ",
+  StyleBox["eqEps",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  "[[1]] in a complex-valued form; that is,"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \(\(sol0 = 
+      u\_0 -> \((A[#2]\ Exp[I\ #1] + A\&_[#2]\ Exp[\(-I\)\ #1]\ &)\); \)\)], 
+  "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[TextData[{
+  "where ",
+  Cell[BoxData[
+      \(TraditionalForm\`A\&_\)]],
+  " is the complex conjugate of ",
+  StyleBox["A ",
+    FontSlant->"Italic"],
+  "and"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{"ruleA", "=", 
+        RowBox[{"{", 
+          RowBox[{
+            RowBox[{
+              StyleBox["A",
+                FontSlant->"Italic"], "->", 
+              RowBox[{"(", 
+                RowBox[{
+                  RowBox[{\(1\/2\), 
+                    RowBox[{
+                      StyleBox["a",
+                        FontSlant->"Italic"], 
+                      StyleBox["[",
+                        FontSlant->"Italic"], 
+                      StyleBox["#",
+                        FontSlant->"Italic"], "]"}], " ", 
+                    \(Exp[I\ \[Beta][#]]\)}], " ", "&"}], ")"}]}], ",", 
+            RowBox[{
+              StyleBox[
+                OverscriptBox[
+                  StyleBox["A",
+                    FontSlant->"Italic"], "_"],
+                FontSlant->"Italic"], "->", 
+              RowBox[{"(", 
+                RowBox[{
+                  RowBox[{\(1\/2\), 
+                    RowBox[{
+                      StyleBox["a",
+                        FontSlant->"Italic"], 
+                      StyleBox["[",
+                        FontSlant->"Italic"], 
+                      StyleBox["#",
+                        FontSlant->"Italic"], "]"}], " ", 
+                    \(Exp[\(-I\)\ \[Beta][#]]\)}], " ", "&"}], ")"}]}]}], 
+          "}"}]}], ";"}]], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[TextData[{
+  "Substituting ",
+  StyleBox["sol0",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " into ",
+  StyleBox["eqEps",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  "[[2]] and moving the nonhomogeneous terms to the right-hand side of the \
+resulting equation, we have"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    RowBox[{"eq241g", "=", 
+      RowBox[{
+        RowBox[{
+          RowBox[{
+            RowBox[{
+              RowBox[{\(u\_1[T\_0, T\_1]\), "+", 
+                RowBox[{
+                  SubsuperscriptBox["u", "1", 
+                    TagBox[\((2, 0)\),
+                      Derivative],
+                    MultilineFunction->None], "[", \(T\_0, T\_1\), "]"}], 
+                "-", "#"}], " ", "&"}], " ", "/@", " ", 
+            \((eqEps[\([2]\)] /. sol0)\)}], "//", "ExpandAll"}], "//", 
+        "Reverse"}]}]], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{\(u\_1[T\_0, T\_1]\), "+", 
+        RowBox[{
+          SubsuperscriptBox["u", "1", 
+            TagBox[\((2, 0)\),
+              Derivative],
+            MultilineFunction->None], "[", \(T\_0, T\_1\), "]"}]}], "==", 
+      RowBox[{
+      \(\(-E\^\(3\ I\ T\_0\)\)\ A[T\_1]\^3\), "-", 
+        \(3\ E\^\(I\ T\_0\)\ A[T\_1]\^2\ A\&_[T\_1]\), "-", 
+        \(3\ E\^\(\(-I\)\ T\_0\)\ A[T\_1]\ A\&_[T\_1]\^2\), "-", 
+        \(E\^\(\(-3\)\ I\ T\_0\)\ A\&_[T\_1]\^3\), "-", 
+        RowBox[{"2", " ", "I", " ", \(E\^\(I\ T\_0\)\), " ", 
+          RowBox[{
+            SuperscriptBox["A", "\[Prime]",
+              MultilineFunction->None], "[", \(T\_1\), "]"}]}], "+", 
+        RowBox[{"2", " ", "I", " ", \(E\^\(\(-I\)\ T\_0\)\), " ", 
+          RowBox[{
+            SuperscriptBox[\(A\&_\), "\[Prime]",
+              MultilineFunction->None], "[", \(T\_1\), "]"}]}]}]}]], "Output",\
+
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "We note that the terms proportional to ",
+  Cell[BoxData[
+      \(TraditionalForm\`Exp[I\ T\_0]\)]],
+  " and ",
+  Cell[BoxData[
+      \(TraditionalForm\`Exp[\(-I\)\ T\_0]\)]],
+  " produce secular terms in the particular solution of ",
+  Cell[BoxData[
+      \(TraditionalForm\`u\_1\)]],
+  ". Thus, to produce a uniform expansion, we set the coefficient of each of \
+these functions equal to zero; that is,"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(eq241h = 
+      \(Coefficient[eq241g[\([2]\)], #] == 0\ &\)\ /@
+        \ {Exp[I\ T\_0], Exp[\(-I\)\ T\_0]}\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        RowBox[{
+          RowBox[{\(\(-3\)\ A[T\_1]\^2\ A\&_[T\_1]\), "-", 
+            RowBox[{"2", " ", "I", " ", 
+              RowBox[{
+                SuperscriptBox["A", "\[Prime]",
+                  MultilineFunction->None], "[", \(T\_1\), "]"}]}]}], "==", 
+          "0"}], ",", 
+        RowBox[{
+          RowBox[{\(\(-3\)\ A[T\_1]\ A\&_[T\_1]\^2\), "+", 
+            RowBox[{"2", " ", "I", " ", 
+              RowBox[{
+                SuperscriptBox[\(A\&_\), "\[Prime]",
+                  MultilineFunction->None], "[", \(T\_1\), "]"}]}]}], "==", 
+          "0"}]}], "}"}]], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell["\<\
+These two equations are not independent because they are complex conjugates \
+of each other. Hence, if one of them is satisfied, the other is automatically \
+satisfied.\
+\>", "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[TextData[{
+  "To analyze the solutions of ",
+  StyleBox["eq241h",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  "[[1]], we multiply it by ",
+  Cell[BoxData[
+      \(TraditionalForm\`Exp[\(-I\)\ \[Beta][T\_1]]\)]],
+  " and replace ",
+  Cell[BoxData[
+      \(TraditionalForm\`A\)]],
+  " with its polar form ",
+  StyleBox["ruleA",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  ". The result is"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(eq241i = 
+      Expand[eq241h[\([1, 1]\)]\ Exp[\(-I\)\ \[Beta][T\_1]] /. ruleA] == 0
+        \)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{\(\(-\(3\/8\)\)\ a[T\_1]\^3\), "-", 
+        RowBox[{"I", " ", 
+          RowBox[{
+            SuperscriptBox["a", "\[Prime]",
+              MultilineFunction->None], "[", \(T\_1\), "]"}]}], "+", 
+        RowBox[{\(a[T\_1]\), " ", 
+          RowBox[{
+            SuperscriptBox["\[Beta]", "\[Prime]",
+              MultilineFunction->None], "[", \(T\_1\), "]"}]}]}], "==", 
+      "0"}]], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "Next, we separate the real and imaginary parts of ",
+  StyleBox["eq241i",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  ". To accomplish this, we define the following rule: "
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \(\(realRule = {Re[s_] -> s, Im[s_] -> 0}; \)\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[TextData[{
+  "Using the ",
+  StyleBox["realRule",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  ", we find that the imaginary part of ",
+  StyleBox["eq241i",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " is"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(ampEq = Im[eq241i[\([1]\)]] == 0 /. realRule\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{"-", 
+        RowBox[{
+          SuperscriptBox["a", "\[Prime]",
+            MultilineFunction->None], "[", \(T\_1\), "]"}]}], "==", "0"}]], 
+  "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "which governs the modulation of the amplitude. Similarly, the real part of \
+",
+  StyleBox["eq241i",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " is"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(phaseEq = Re[eq241i[\([1]\)]] == 0 /. realRule\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{\(\(-\(3\/8\)\)\ a[T\_1]\^3\), "+", 
+        RowBox[{\(a[T\_1]\), " ", 
+          RowBox[{
+            SuperscriptBox["\[Beta]", "\[Prime]",
+              MultilineFunction->None], "[", \(T\_1\), "]"}]}]}], "==", 
+      "0"}]], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell["\<\
+which governs the modulation of the phase. These modulation equations are in \
+agreement with those obtained above by expressing the solution in real \
+form.\
+\>", "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell["\<\
+Comparing the complex-valued and the real-valued representations, we find it \
+more convenient to use the complex-valued form. Therefore, the complex-valued \
+form is used in the remainder of this book.\
+\>", "Text",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["2.4.2 First-Order Real-Valued System", "Subsection",
+  CellMargins->{{Inherited, 17.4375}, {Inherited, Inherited}},
+  Evaluatable->False,
+  TextAlignment->Left,
+  TextJustification->1,
+  AspectRatioFixed->True,
+  CellTags->{"ChapterTwo", "ChapterTwo.2", "ChapterTwo.2.1"}],
+
+Cell[TextData[{
+  "We let ",
+  Cell[BoxData[
+      \(TraditionalForm\`v[t] = \(u\^\[Prime]\)[t]\)]],
+  " and transform the ",
+  StyleBox["DuffingEq",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " into the following set of two first-order equations:"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{"eq242a", "=", 
+        RowBox[{"{", 
+          RowBox[{\(\(u\^\[Prime]\)[t] == v[t]\), ",", 
+            RowBox[{
+              RowBox[{
+                RowBox[{
+                  SuperscriptBox["v", "\[Prime]",
+                    MultilineFunction->None], "[", "t", "]"}], "+", 
+                \(u[t]\)}], "==", \(\(-\[Epsilon]\)\ u[t]\^3\)}]}], "}"}]}], 
+      ";"}]], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[TextData[{
+  "We seek a first-order uniform expansion of the solution of ",
+  StyleBox["eq242a",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " in terms of the two time scales ",
+  Cell[BoxData[
+      \(TraditionalForm\`T\_0\)]],
+  " and ",
+  Cell[BoxData[
+      \(TraditionalForm\`T\_1\)]],
+  " in the form"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \(\(solRule = {u -> \((Sum[\[Epsilon]\^j\ u\_j[#1, #2], {j, 0, 1}]\ &)\), 
+        v -> \((Sum[\[Epsilon]\^j\ v\_j[#1, #2], {j, 0, 1}]\ &)\)}; \)\)], 
+  "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[TextData[{
+  "Substituting ",
+  StyleBox["solRule",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " into ",
+  StyleBox["eq242a",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  ", transforming the derivative with respect to ",
+  Cell[BoxData[
+      \(TraditionalForm\`t\)]],
+  " in terms of the derivatives with respect to ",
+  Cell[BoxData[
+      \(TraditionalForm\`T\_0\)]],
+  " and ",
+  Cell[BoxData[
+      \(TraditionalForm\`T\_1\)]],
+  ", and discarding terms of order higher than ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Epsilon]\)]],
+  ", we obtain"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    RowBox[{"eq242b", "=", 
+      RowBox[{
+        RowBox[{"(", 
+          RowBox[{
+            RowBox[{
+              RowBox[{"eq242a", "/.", 
+                RowBox[{"{", 
+                  RowBox[{
+                    RowBox[{
+                      RowBox[{
+                        SuperscriptBox["u_", "\[Prime]",
+                          MultilineFunction->None], "[", "t", "]"}], "->", 
+                      \(\(dt[1]\)[u[T\_0, T\_1]]\)}], ",", 
+                    \(u_[t] -> u[T\_0, T\_1]\)}], "}"}]}], "/.", "solRule"}], 
+            "//", "ExpandAll"}], ")"}], "/.", 
+        \(\[Epsilon]\^\(n_ /; n > 1\) -> 0\)}]}]], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        RowBox[{
+          RowBox[{
+            RowBox[{"\[Epsilon]", " ", 
+              RowBox[{
+                SubsuperscriptBox["u", "0", 
+                  TagBox[\((0, 1)\),
+                    Derivative],
+                  MultilineFunction->None], "[", \(T\_0, T\_1\), "]"}]}], 
+            "+", 
+            RowBox[{
+              SubsuperscriptBox["u", "0", 
+                TagBox[\((1, 0)\),
+                  Derivative],
+                MultilineFunction->None], "[", \(T\_0, T\_1\), "]"}], "+", 
+            RowBox[{"\[Epsilon]", " ", 
+              RowBox[{
+                SubsuperscriptBox["u", "1", 
+                  TagBox[\((1, 0)\),
+                    Derivative],
+                  MultilineFunction->None], "[", \(T\_0, T\_1\), "]"}]}]}], 
+          "==", \(v\_0[T\_0, T\_1] + \[Epsilon]\ v\_1[T\_0, T\_1]\)}], ",", 
+        RowBox[{
+          RowBox[{
+          \(u\_0[T\_0, T\_1]\), "+", \(\[Epsilon]\ u\_1[T\_0, T\_1]\), "+", 
+            RowBox[{"\[Epsilon]", " ", 
+              RowBox[{
+                SubsuperscriptBox["v", "0", 
+                  TagBox[\((0, 1)\),
+                    Derivative],
+                  MultilineFunction->None], "[", \(T\_0, T\_1\), "]"}]}], 
+            "+", 
+            RowBox[{
+              SubsuperscriptBox["v", "0", 
+                TagBox[\((1, 0)\),
+                  Derivative],
+                MultilineFunction->None], "[", \(T\_0, T\_1\), "]"}], "+", 
+            RowBox[{"\[Epsilon]", " ", 
+              RowBox[{
+                SubsuperscriptBox["v", "1", 
+                  TagBox[\((1, 0)\),
+                    Derivative],
+                  MultilineFunction->None], "[", \(T\_0, T\_1\), "]"}]}]}], 
+          "==", \(\(-\[Epsilon]\)\ u\_0[T\_0, T\_1]\^3\)}]}], "}"}]], "Output",\
+
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "Equating coefficients of like powers of ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Epsilon]\)]],
+  ", we have"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(eqEps = 
+      \(Thread[CoefficientList[Subtract\ @@\ #, \[Epsilon]] == 0]\ &\)\ /@\ 
+          eq242b // Transpose\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        RowBox[{"{", 
+          RowBox[{
+            RowBox[{
+              RowBox[{\(-v\_0[T\_0, T\_1]\), "+", 
+                RowBox[{
+                  SubsuperscriptBox["u", "0", 
+                    TagBox[\((1, 0)\),
+                      Derivative],
+                    MultilineFunction->None], "[", \(T\_0, T\_1\), "]"}]}], 
+              "==", "0"}], ",", 
+            RowBox[{
+              RowBox[{\(u\_0[T\_0, T\_1]\), "+", 
+                RowBox[{
+                  SubsuperscriptBox["v", "0", 
+                    TagBox[\((1, 0)\),
+                      Derivative],
+                    MultilineFunction->None], "[", \(T\_0, T\_1\), "]"}]}], 
+              "==", "0"}]}], "}"}], ",", 
+        RowBox[{"{", 
+          RowBox[{
+            RowBox[{
+              RowBox[{\(-v\_1[T\_0, T\_1]\), "+", 
+                RowBox[{
+                  SubsuperscriptBox["u", "0", 
+                    TagBox[\((0, 1)\),
+                      Derivative],
+                    MultilineFunction->None], "[", \(T\_0, T\_1\), "]"}], 
+                "+", 
+                RowBox[{
+                  SubsuperscriptBox["u", "1", 
+                    TagBox[\((1, 0)\),
+                      Derivative],
+                    MultilineFunction->None], "[", \(T\_0, T\_1\), "]"}]}], 
+              "==", "0"}], ",", 
+            RowBox[{
+              RowBox[{
+              \(u\_0[T\_0, T\_1]\^3\), "+", \(u\_1[T\_0, T\_1]\), "+", 
+                RowBox[{
+                  SubsuperscriptBox["v", "0", 
+                    TagBox[\((0, 1)\),
+                      Derivative],
+                    MultilineFunction->None], "[", \(T\_0, T\_1\), "]"}], 
+                "+", 
+                RowBox[{
+                  SubsuperscriptBox["v", "1", 
+                    TagBox[\((1, 0)\),
+                      Derivative],
+                    MultilineFunction->None], "[", \(T\_0, T\_1\), "]"}]}], 
+              "==", "0"}]}], "}"}]}], "}"}]], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Zeroth-Order Problem: Linear System", "Subsubsection",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell["The zeroth-order problem is given by the linear system", "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(linearSys = \(#[\([1]\)]\ &\)\ /@\ eqEps[\([1]\)]\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        RowBox[{\(-v\_0[T\_0, T\_1]\), "+", 
+          RowBox[{
+            SubsuperscriptBox["u", "0", 
+              TagBox[\((1, 0)\),
+                Derivative],
+              MultilineFunction->None], "[", \(T\_0, T\_1\), "]"}]}], ",", 
+        RowBox[{\(u\_0[T\_0, T\_1]\), "+", 
+          RowBox[{
+            SubsuperscriptBox["v", "0", 
+              TagBox[\((1, 0)\),
+                Derivative],
+              MultilineFunction->None], "[", \(T\_0, T\_1\), "]"}]}]}], 
+      "}"}]], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "To determine the solution of this linear system, we seek a solution \
+proportional to ",
+  Cell[BoxData[
+      \(TraditionalForm\`Exp[I\ T\_0]\)]],
+  " as"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(coefList = 
+      E\^\(\(-I\)\ T\_0\)\ linearSys /. {u\_0 -> \((P\ E\^\(I\ #\)&)\), 
+            v\_0 -> \((Q\ E\^\(I\ #\)&)\)} // Expand\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \({I\ P - Q, P + I\ Q}\)], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell["Next, we determine the coefficient matrix as", "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(coefMat = Outer[Coefficient, coefList, {P, Q}]\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \({{I, \(-1\)}, {1, I}}\)], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "To determine the eigenvalues and eigenvectors of ",
+  StyleBox["coefMat",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  ", we define the following conjugate rule and Hermitian matrix:"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \(\(conjugateRule = {A -> A\&_, A\&_ -> A, 
+        Complex[0, n_] -> Complex[0, \(-n\)]}; \)\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \(hermitian[mat_?MatrixQ] := mat /. conjugateRule // Transpose\)], "Input",\
+
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[TextData[{
+  "Then the left and right eigenvectors of ",
+  StyleBox["coefMat",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " are given by"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(leftVec = {1, c1} /. 
+        \(Solve[\((hermitian[coefMat] . {1, c1})\)[\([1]\)] == 0, c1]\)[
+          \([1]\)]\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \({1, I}\)], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(rightVec = {1, c1} /. 
+        \(Solve[\((coefMat . {1, c1})\)[\([1]\)] == 0, c1]\)[\([1]\)]\)], 
+  "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \({1, I}\)], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell["\<\
+To express the solution of the zeroth-order problem, we introduce the \
+following basic function:\
+\>", "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \(\(basicH = A[T\_1]\ E\^\(I\ T\_0\); \)\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell["\<\
+In terms of this function and the right eigenvector, the solution of the \
+zeroth-order problem can be expressed in terms of\
+\>", "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(sol0Form = rightVec\ basicH\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \({E\^\(I\ T\_0\)\ A[T\_1], I\ E\^\(I\ T\_0\)\ A[T\_1]}\)], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell["and its complex conjugate as", "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(sol0 = {
+        u\_0 -> Function[{T\_0, T\_1}, 
+            sol0Form[\([1]\)] + \((sol0Form[\([1]\)] /. conjugateRule)\) // 
+              Evaluate], 
+        v\_0 -> Function[{T\_0, T\_1}, 
+            sol0Form[\([2]\)] + \((sol0Form[\([2]\)] /. conjugateRule)\) // 
+              Evaluate]}\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \({u\_0 \[Rule] 
+        Function[{T\_0, T\_1}, 
+          E\^\(I\ T\_0\)\ A[T\_1] + E\^\(\(-I\)\ T\_0\)\ A\&_[T\_1]], 
+      v\_0 \[Rule] 
+        Function[{T\_0, T\_1}, 
+          I\ E\^\(I\ T\_0\)\ A[T\_1] - I\ E\^\(\(-I\)\ T\_0\)\ A\&_[T\_1]]}
+      \)], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell["\<\
+We have expressed the solution of the zeroth-order problem in function form \
+so that its partial derivatives can be readily evaluated.\
+\>", "Text",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["First-Order Problem", "Subsubsection",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[TextData[{
+  "Substituting the zeroth-order solution ",
+  StyleBox["sol0",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " into the first-order problem ",
+  StyleBox["eqEps",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  "[[2]] and moving the nonhomogeneous terms to the right-hand sides of the \
+resulting equations, we obtain"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(order1Eq = 
+      \((linearSys /. u_\_0 -> u\_1)\) == 
+          \((linearSys /. u_\_0 -> u\_1)\) - 
+            \((\(Subtract\ @@\ #\ &\)\ /@\ eqEps[\([2]\)] /. sol0 // Expand)
+              \) // Thread\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        RowBox[{
+          RowBox[{\(-v\_1[T\_0, T\_1]\), "+", 
+            RowBox[{
+              SubsuperscriptBox["u", "1", 
+                TagBox[\((1, 0)\),
+                  Derivative],
+                MultilineFunction->None], "[", \(T\_0, T\_1\), "]"}]}], 
+          "==", 
+          RowBox[{
+            RowBox[{\(-E\^\(I\ T\_0\)\), " ", 
+              RowBox[{
+                SuperscriptBox["A", "\[Prime]",
+                  MultilineFunction->None], "[", \(T\_1\), "]"}]}], "-", 
+            RowBox[{\(E\^\(\(-I\)\ T\_0\)\), " ", 
+              RowBox[{
+                SuperscriptBox[\(A\&_\), "\[Prime]",
+                  MultilineFunction->None], "[", \(T\_1\), "]"}]}]}]}], ",", 
+        RowBox[{
+          RowBox[{\(u\_1[T\_0, T\_1]\), "+", 
+            RowBox[{
+              SubsuperscriptBox["v", "1", 
+                TagBox[\((1, 0)\),
+                  Derivative],
+                MultilineFunction->None], "[", \(T\_0, T\_1\), "]"}]}], 
+          "==", 
+          RowBox[{
+          \(\(-E\^\(3\ I\ T\_0\)\)\ A[T\_1]\^3\), "-", 
+            \(3\ E\^\(I\ T\_0\)\ A[T\_1]\^2\ A\&_[T\_1]\), "-", 
+            \(3\ E\^\(\(-I\)\ T\_0\)\ A[T\_1]\ A\&_[T\_1]\^2\), "-", 
+            \(E\^\(\(-3\)\ I\ T\_0\)\ A\&_[T\_1]\^3\), "-", 
+            RowBox[{"I", " ", \(E\^\(I\ T\_0\)\), " ", 
+              RowBox[{
+                SuperscriptBox["A", "\[Prime]",
+                  MultilineFunction->None], "[", \(T\_1\), "]"}]}], "+", 
+            RowBox[{"I", " ", \(E\^\(\(-I\)\ T\_0\)\), " ", 
+              RowBox[{
+                SuperscriptBox[\(A\&_\), "\[Prime]",
+                  MultilineFunction->None], "[", \(T\_1\), "]"}]}]}]}]}], 
+      "}"}]], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "Eliminating the terms that produce secular terms in ",
+  StyleBox["order1Eq",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " demands that their right-hand sides are orthogonal to every solution of \
+the adjoint homogeneous problem. To determine these conditions, we first \
+calculate the coefficient vector of ",
+  Cell[BoxData[
+      \(TraditionalForm\`Exp[I\ T\_0]\)]],
+  " as"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(STerms = \(Coefficient[#[\([2]\)], Exp[I\ T\_0]]\ &\)\ /@\ order1Eq\)], 
+  "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        RowBox[{"-", 
+          RowBox[{
+            SuperscriptBox["A", "\[Prime]",
+              MultilineFunction->None], "[", \(T\_1\), "]"}]}], ",", 
+        RowBox[{\(\(-3\)\ A[T\_1]\^2\ A\&_[T\_1]\), "-", 
+          RowBox[{"I", " ", 
+            RowBox[{
+              SuperscriptBox["A", "\[Prime]",
+                MultilineFunction->None], "[", \(T\_1\), "]"}]}]}]}], "}"}]], 
+  "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell["\<\
+Then, we demand that this vector is orthogonal to the left eigenvector and \
+obtain the solvability condition\
+\>", "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(SCond = Expand[Conjugate[leftVec] . STerms] == 0\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{\(3\ I\ A[T\_1]\^2\ A\&_[T\_1]\), "-", 
+        RowBox[{"2", " ", 
+          RowBox[{
+            SuperscriptBox["A", "\[Prime]",
+              MultilineFunction->None], "[", \(T\_1\), "]"}]}]}], "==", 
+      "0"}]], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "which is in agreement with that obtained by treating the second-order form \
+of the ",
+  StyleBox["DuffingEq",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  ". Repeating the procedure for the coefficient vector of ",
+  Cell[BoxData[
+      \(TraditionalForm\`Exp[\(-I\)\ T\_0]\)]],
+  ", we obtain the complex conjugate of ",
+  StyleBox["SCond",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  "."
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["2.4.3 First-Order Complex-Valued System", "Subsection",
+  CellMargins->{{Inherited, 17.4375}, {Inherited, Inherited}},
+  Evaluatable->False,
+  TextAlignment->Left,
+  TextJustification->1,
+  AspectRatioFixed->True,
+  CellTags->{"ChapterTwo", "ChapterTwo.2", "ChapterTwo.2.1"}],
+
+Cell[TextData[{
+  "In this section, we determine a first-order uniform expansion of the \
+solution of the ",
+  StyleBox["DuffingEq",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " by transforming it first into a single first-order complex-valued \
+equation. To this end, we introduce the transformation"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \(\(transfRule = {u[t] -> \[Zeta][t] + \[Zeta]\&_[t], 
+        \(u\^\[Prime]\)[t] -> I\ \((\[Zeta][t] - \[Zeta]\&_[t])\)}; \)\)], 
+  "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell["whose inverse is", "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(zetaRule = 
+      \(Solve[transfRule /. Rule -> Equal, {\[Zeta][t], \[Zeta]\&_[t]}]\)[
+        \([1]\)]\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        RowBox[{\(\[Zeta][t]\), "\[Rule]", 
+          RowBox[{\(1\/2\), " ", 
+            RowBox[{"(", 
+              RowBox[{\(u[t]\), "-", 
+                RowBox[{"I", " ", 
+                  RowBox[{
+                    SuperscriptBox["u", "\[Prime]",
+                      MultilineFunction->None], "[", "t", "]"}]}]}], 
+              ")"}]}]}], ",", 
+        RowBox[{\(\[Zeta]\&_[t]\), "\[Rule]", 
+          RowBox[{\(1\/2\), " ", 
+            RowBox[{"(", 
+              RowBox[{\(u[t]\), "+", 
+                RowBox[{"I", " ", 
+                  RowBox[{
+                    SuperscriptBox["u", "\[Prime]",
+                      MultilineFunction->None], "[", "t", "]"}]}]}], 
+              ")"}]}]}]}], "}"}]], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "It follows from the ",
+  StyleBox["DuffingEq",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " that the acceleration is related to the displacement according to"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(acceleration = 
+      \(Solve[DuffingEq, \(u\^\[DoublePrime]\)[t]]\)[\([1]\)]\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        RowBox[{
+          SuperscriptBox["u", "\[DoublePrime]",
+            MultilineFunction->None], "[", "t", "]"}], "\[Rule]", 
+        \(\(-u[t]\) - \[Epsilon]\ u[t]\^3\)}], "}"}]], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "Differentiating ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Zeta][t]\)]],
+  ", ",
+  StyleBox["zetaRule",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  "[[1]], with respect to ",
+  Cell[BoxData[
+      \(TraditionalForm\`t\)]],
+  " and substituting for ",
+  Cell[BoxData[
+      \(TraditionalForm\`u[t], \(u\^\[Prime]\)[t], \)]],
+  " and ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(u\^\[DoublePrime]\)[t]\)]],
+  " using the ",
+  StyleBox["acceleration",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " and ",
+  StyleBox["transfRule",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  ", we obtain"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(eq243a = 
+      \(\(D[zetaRule[\([1]\)], t] /. acceleration\) /. transfRule\) /. 
+          Rule -> Equal // ExpandAll\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{
+        SuperscriptBox["\[Zeta]", "\[Prime]",
+          MultilineFunction->None], "[", "t", "]"}], "==", 
+      \(I\ \[Zeta][t] + 1\/2\ I\ \[Epsilon]\ \[Zeta][t]\^3 + 
+        3\/2\ I\ \[Epsilon]\ \[Zeta][t]\^2\ \[Zeta]\&_[t] + 
+        3\/2\ I\ \[Epsilon]\ \[Zeta][t]\ \[Zeta]\&_[t]\^2 + 
+        1\/2\ I\ \[Epsilon]\ \[Zeta]\&_[t]\^3\)}]], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "Next, we use the method of multiple scales to determine a first-order \
+uniform expansion of the solution of ",
+  StyleBox["eq243a",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " in the form"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \(\(solRule = {
+        \[Zeta] -> 
+          \((Sum[\[Epsilon]\^j\ \[Zeta]\_j[#1, #2], {j, 0, 1}]\ &)\), 
+        \[Zeta]\&_ -> 
+          \((Sum[\(\[Epsilon]\^j\) \[Zeta]\&_\_j[#1, #2], {j, 0, 1}]\ &)\)}; 
+    \)\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[TextData[{
+  "Substituting this expansion into ",
+  StyleBox["eq243a",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  ", expanding the result, and discarding terms of order higher than \
+\[Epsilon], we have"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    RowBox[{"eq243b", "=", 
+      RowBox[{
+        RowBox[{"(", 
+          RowBox[{
+            RowBox[{
+              RowBox[{"eq243a", "/.", 
+                RowBox[{"{", 
+                  RowBox[{
+                  \(\[Zeta][t] -> \[Zeta][T\_0, T\_1]\), ",", 
+                    \(\[Zeta]\&_[t] -> \[Zeta]\&_[T\_0, T\_1]\), ",", 
+                    RowBox[{
+                      RowBox[{
+                        SuperscriptBox["\[Zeta]", "\[Prime]",
+                          MultilineFunction->None], "[", "t", "]"}], "->", 
+                      \(\(dt[1]\)[\[Zeta][T\_0, T\_1]]\)}]}], "}"}]}], "/.", 
+              "solRule"}], "//", "ExpandAll"}], ")"}], "/.", 
+        \(\[Epsilon]\^\(n_ /; n > 1\) -> 0\)}]}]], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{
+        RowBox[{"\[Epsilon]", " ", 
+          RowBox[{
+            SubsuperscriptBox["\[Zeta]", "0", 
+              TagBox[\((0, 1)\),
+                Derivative],
+              MultilineFunction->None], "[", \(T\_0, T\_1\), "]"}]}], "+", 
+        RowBox[{
+          SubsuperscriptBox["\[Zeta]", "0", 
+            TagBox[\((1, 0)\),
+              Derivative],
+            MultilineFunction->None], "[", \(T\_0, T\_1\), "]"}], "+", 
+        RowBox[{"\[Epsilon]", " ", 
+          RowBox[{
+            SubsuperscriptBox["\[Zeta]", "1", 
+              TagBox[\((1, 0)\),
+                Derivative],
+              MultilineFunction->None], "[", \(T\_0, T\_1\), "]"}]}]}], "==", 
+      \(I\ \[Zeta]\_0[T\_0, T\_1] + 
+        1\/2\ I\ \[Epsilon]\ \[Zeta]\_0[T\_0, T\_1]\^3 + 
+        I\ \[Epsilon]\ \[Zeta]\_1[T\_0, T\_1] + 
+        3\/2\ I\ \[Epsilon]\ \[Zeta]\_0[T\_0, T\_1]\^2\ 
+          \[Zeta]\&_\_0[T\_0, T\_1] + 
+        3\/2\ I\ \[Epsilon]\ \[Zeta]\_0[T\_0, T\_1]\ 
+          \[Zeta]\&_\_0[T\_0, T\_1]\^2 + 
+        1\/2\ I\ \[Epsilon]\ \[Zeta]\&_\_0[T\_0, T\_1]\^3\)}]], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "Equating coefficients of like power of \[Epsilon] in ",
+  StyleBox["eq243b",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " yields"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(eqEps = 
+      CoefficientList[Subtract\ @@\ eq243b, \[Epsilon]] == 0 // Thread\)], 
+  "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        RowBox[{
+          RowBox[{\(\(-I\)\ \[Zeta]\_0[T\_0, T\_1]\), "+", 
+            RowBox[{
+              SubsuperscriptBox["\[Zeta]", "0", 
+                TagBox[\((1, 0)\),
+                  Derivative],
+                MultilineFunction->None], "[", \(T\_0, T\_1\), "]"}]}], "==", 
+          "0"}], ",", 
+        RowBox[{
+          RowBox[{
+          \(\(-\(1\/2\)\)\ I\ \[Zeta]\_0[T\_0, T\_1]\^3\), "-", 
+            \(I\ \[Zeta]\_1[T\_0, T\_1]\), "-", 
+            \(3\/2\ I\ \[Zeta]\_0[T\_0, T\_1]\^2\ 
+              \[Zeta]\&_\_0[T\_0, T\_1]\), "-", 
+            \(3\/2\ I\ \[Zeta]\_0[T\_0, T\_1]\ 
+              \[Zeta]\&_\_0[T\_0, T\_1]\^2\), "-", 
+            \(1\/2\ I\ \[Zeta]\&_\_0[T\_0, T\_1]\^3\), "+", 
+            RowBox[{
+              SubsuperscriptBox["\[Zeta]", "0", 
+                TagBox[\((0, 1)\),
+                  Derivative],
+                MultilineFunction->None], "[", \(T\_0, T\_1\), "]"}], "+", 
+            RowBox[{
+              SubsuperscriptBox["\[Zeta]", "1", 
+                TagBox[\((1, 0)\),
+                  Derivative],
+                MultilineFunction->None], "[", \(T\_0, T\_1\), "]"}]}], "==", 
+          "0"}]}], "}"}]], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "The solution of the zeroth-order problem, ",
+  StyleBox["eqEps",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  "[[1]], can be expressed as"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(sol0Form = 
+      \(DSolve[eqEps[\([1]\)], \[Zeta]\_0[T\_0, T\_1], {T\_0, T\_1}]\)[
+          \([1]\)] /. C[1] -> A\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \({\[Zeta]\_0[T\_0, T\_1] \[Rule] E\^\(I\ T\_0\)\ A[T\_1]}\)], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell["which we express in function form as", "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(sol0 = {
+        \[Zeta]\_0 -> 
+          Function[{T\_0, T\_1}, sol0Form[\([1, 2]\)] // Evaluate]}\)], 
+  "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \({\[Zeta]\_0 \[Rule] Function[{T\_0, T\_1}, E\^\(I\ T\_0\)\ A[T\_1]]}
+      \)], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "To evaluate the complex conjugates of ",
+  Cell[BoxData[
+      \(TraditionalForm\`A\)]],
+  " and \[Zeta], we define the conjugate rule"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \(\(conjugateRule = {A -> A\&_, A\&_ -> A, \[Zeta] -> \[Zeta]\&_, 
+        \[Zeta]\&_ -> \[Zeta], Complex[0, n_] -> Complex[0, \(-n\)]}; \)\)], 
+  "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[TextData[{
+  "Substituting ",
+  StyleBox["sol0",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " into the first-order problem, ",
+  StyleBox["eqEps",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  "[[2]], using ",
+  StyleBox["conjugateRule",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  ", and moving the nonhomogeneous terms to the right-hand side of the \
+resulting equation, we obtain"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(order1Eq = 
+      \((eqEps[\([1, 1]\)] /. \[Zeta]\_0 -> \[Zeta]\_1)\) == 
+        \((eqEps[\([1, 1]\)] /. \[Zeta]\_0 -> \[Zeta]\_1)\) - 
+          \((\(eqEps[\([2, 1]\)] /. sol0\) /. \((sol0 /. conjugateRule)\))
+            \)\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{\(\(-I\)\ \[Zeta]\_1[T\_0, T\_1]\), "+", 
+        RowBox[{
+          SubsuperscriptBox["\[Zeta]", "1", 
+            TagBox[\((1, 0)\),
+              Derivative],
+            MultilineFunction->None], "[", \(T\_0, T\_1\), "]"}]}], "==", 
+      RowBox[{
+      \(1\/2\ I\ E\^\(3\ I\ T\_0\)\ A[T\_1]\^3\), "+", 
+        \(3\/2\ I\ E\^\(I\ T\_0\)\ A[T\_1]\^2\ A\&_[T\_1]\), "+", 
+        \(3\/2\ I\ E\^\(\(-I\)\ T\_0\)\ A[T\_1]\ A\&_[T\_1]\^2\), "+", 
+        \(1\/2\ I\ E\^\(\(-3\)\ I\ T\_0\)\ A\&_[T\_1]\^3\), "-", 
+        RowBox[{\(E\^\(I\ T\_0\)\), " ", 
+          RowBox[{
+            SuperscriptBox["A", "\[Prime]",
+              MultilineFunction->None], "[", \(T\_1\), "]"}]}]}]}]], "Output",\
+
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "Elimintaing the terms that lead to secular terms from ",
+  StyleBox["order1Eq",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " yields the solvability condition"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(SCond = Coefficient[order1Eq[\([2]\)], E\^\(I\ T\_0\)] == 0\)], "Input",\
+
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{\(3\/2\ I\ A[T\_1]\^2\ A\&_[T\_1]\), "-", 
+        RowBox[{
+          SuperscriptBox["A", "\[Prime]",
+            MultilineFunction->None], "[", \(T\_1\), "]"}]}], "==", "0"}]], 
+  "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "in agreement with that obtained by treating the second-order form of the ",
+  
+  StyleBox["DuffingEq",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " as well as that obtained by transforming it first into two first-order \
+real-valued equations."
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["2.5 Variation of Parameters", "Section",
+  CellMargins->{{Inherited, 17.4375}, {Inherited, Inherited}},
+  Evaluatable->False,
+  TextAlignment->Left,
+  TextJustification->1,
+  AspectRatioFixed->True,
+  CellTags->{"ChapterTwo", "ChapterTwo.2", "ChapterTwo.2.1"}],
+
+Cell["\<\
+In the next section, we use the method of averaging to determine a \
+first-order uniform expansion of the solution of the Duffing equation. To \
+this end, we use the method of variation of parameters to transform it into a \
+system of two first-order equations. The Duffing equation is repeated here; \
+that is,\
+\>", "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{"DuffingEq", "=", 
+        RowBox[{
+          RowBox[{
+            RowBox[{
+              SuperscriptBox["u", "\[DoublePrime]",
+                MultilineFunction->None], "[", "t", "]"}], "+", \(u[t]\), 
+            "+", \(\[Epsilon]\ u[t]\^3\)}], "==", "0"}]}], ";"}]], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[TextData[{
+  "When ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Epsilon] = 0\)]],
+  ", the solution of this equation can be written as"
+}], "Text",
+  CellMargins->{{12, Inherited}, {Inherited, Inherited}},
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \(\(usolEq = u[t] == a\ Cos[t + \[Beta]]; \)\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[TextData[{
+  "where ",
+  StyleBox["a",
+    FontSlant->"Italic"],
+  " and \[Beta] are constants, which are sometimes referred to as ",
+  StyleBox["parameters",
+    FontColor->RGBColor[0, 0, 1]],
+  ". It follows from ",
+  StyleBox["usolEq",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " that"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(cond01 = D[usolEq, t]\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{
+        SuperscriptBox["u", "\[Prime]",
+          MultilineFunction->None], "[", "t", "]"}], "==", 
+      \(\(-a\)\ Sin[t + \[Beta]]\)}]], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "When ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Epsilon] \[NotEqual] 0\)]],
+  ", we assume that the solution of ",
+  StyleBox["DuffingEq",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " is still given by ",
+  StyleBox["usolEq",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " but with time-varying ",
+  StyleBox["a",
+    FontSlant->"Italic"],
+  " and \[Beta]; that is,"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \(\(tdepRule = {a -> a[t], \[Beta] -> \[Beta][t]}; \)\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell["and hence", "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(usolEqt = usolEq /. tdepRule\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \(u[t] == a[t]\ Cos[t + \[Beta][t]]\)], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "In other words, we consider ",
+  StyleBox["usolEq",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " as a transformation from ",
+  Cell[BoxData[
+      \(TraditionalForm\`u[t]\)]],
+  " to ",
+  Cell[BoxData[
+      \(TraditionalForm\`a[t]\)]],
+  " and ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Beta][t]\)]],
+  ". This is why this approach is called the ",
+  StyleBox["method of variation of parameters",
+    FontColor->RGBColor[0, 0, 1]],
+  ". Using this view, we note that we have two equations, namely ",
+  StyleBox["DuffingEq",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " and ",
+  StyleBox["usolEq",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  ", for the three unknowns ",
+  Cell[BoxData[
+      \(TraditionalForm\`u[t], a[t]\)]],
+  ", and ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Beta][t]\)]],
+  ". Hence, we have the freedom of imposing a third condition (third \
+equation). This condition is arbitrary except that it must be independent of \
+",
+  StyleBox["DuffingEq",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " and ",
+  StyleBox["usolEq",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  ". This arbitrariness can be used to advantage, namely to produce a simple \
+and convenient transformation. Out of all possible conditions, we choose to \
+impose the condition ",
+  StyleBox["cond01",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  ", thereby assuming that ",
+  Cell[BoxData[
+      \(TraditionalForm\`u[t]\)]],
+  " as well as ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(u\^\[Prime]\)[t]\)]],
+  " have the same form as in the linear case. This condition leads to a \
+convenient transformation; it leads to a set of first-order rather than \
+second-order equations for ",
+  Cell[BoxData[
+      \(TraditionalForm\`a[t]\)]],
+  " and ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Beta][t]\)]],
+  "."
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[TextData[{
+  "Differentiating ",
+  StyleBox["usolEq",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " with respect to ",
+  StyleBox["t",
+    FontSlant->"Italic"],
+  " and recalling that ",
+  StyleBox["a",
+    FontSlant->"Italic"],
+  " and \[Beta] are functions of ",
+  StyleBox["t",
+    FontSlant->"Italic"],
+  ", we have"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(cond02 = D[usolEqt, t]\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{
+        SuperscriptBox["u", "\[Prime]",
+          MultilineFunction->None], "[", "t", "]"}], "==", 
+      RowBox[{
+        RowBox[{\(Cos[t + \[Beta][t]]\), " ", 
+          RowBox[{
+            SuperscriptBox["a", "\[Prime]",
+              MultilineFunction->None], "[", "t", "]"}]}], "-", 
+        RowBox[{\(a[t]\), " ", \(Sin[t + \[Beta][t]]\), " ", 
+          RowBox[{"(", 
+            RowBox[{"1", "+", 
+              RowBox[{
+                SuperscriptBox["\[Beta]", "\[Prime]",
+                  MultilineFunction->None], "[", "t", "]"}]}], ")"}]}]}]}]], 
+  "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "Comparing ",
+  StyleBox["cond02",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " with ",
+  StyleBox["cond01",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  ", we conclude that"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(cond1 = 
+      Expand[cond02[\([2]\)] - \((cond01[\([2]\)] /. tdepRule)\)] == 0\)], 
+  "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{
+        RowBox[{\(Cos[t + \[Beta][t]]\), " ", 
+          RowBox[{
+            SuperscriptBox["a", "\[Prime]",
+              MultilineFunction->None], "[", "t", "]"}]}], "-", 
+        RowBox[{\(a[t]\), " ", \(Sin[t + \[Beta][t]]\), " ", 
+          RowBox[{
+            SuperscriptBox["\[Beta]", "\[Prime]",
+              MultilineFunction->None], "[", "t", "]"}]}]}], "==", "0"}]], 
+  "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "Differentiating ",
+  StyleBox["cond01",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " with respect to ",
+  StyleBox["t",
+    FontSlant->"Italic"],
+  ", we obtain"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(cond03 = D[cond01 /. tdepRule, t]\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{
+        SuperscriptBox["u", "\[DoublePrime]",
+          MultilineFunction->None], "[", "t", "]"}], "==", 
+      RowBox[{
+        RowBox[{\(-Sin[t + \[Beta][t]]\), " ", 
+          RowBox[{
+            SuperscriptBox["a", "\[Prime]",
+              MultilineFunction->None], "[", "t", "]"}]}], "-", 
+        RowBox[{\(a[t]\), " ", \(Cos[t + \[Beta][t]]\), " ", 
+          RowBox[{"(", 
+            RowBox[{"1", "+", 
+              RowBox[{
+                SuperscriptBox["\[Beta]", "\[Prime]",
+                  MultilineFunction->None], "[", "t", "]"}]}], ")"}]}]}]}]], 
+  "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "Substituting for ",
+  Cell[BoxData[
+      \(TraditionalForm\`u[t]\)]],
+  " and ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(u\^\[DoublePrime]\)[t]\)]],
+  " from ",
+  StyleBox["usolEqt",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " and ",
+  StyleBox["cond03",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " into ",
+  StyleBox["DuffingEq",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  ", we have"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(cond2 = 
+      DuffingEq /. \(({usolEqt, cond03} /. Equal -> Rule)\) // ExpandAll\)], 
+  "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{\(\[Epsilon]\ a[t]\^3\ Cos[t + \[Beta][t]]\^3\), "-", 
+        RowBox[{\(Sin[t + \[Beta][t]]\), " ", 
+          RowBox[{
+            SuperscriptBox["a", "\[Prime]",
+              MultilineFunction->None], "[", "t", "]"}]}], "-", 
+        RowBox[{\(a[t]\), " ", \(Cos[t + \[Beta][t]]\), " ", 
+          RowBox[{
+            SuperscriptBox["\[Beta]", "\[Prime]",
+              MultilineFunction->None], "[", "t", "]"}]}]}], "==", "0"}]], 
+  "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "Solving ",
+  StyleBox["cond1",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " and ",
+  StyleBox["cond2",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " for ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(a\^\[Prime]\)[t]\)]],
+  " and ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(\[Beta]\^\[Prime]\)[t]\)]],
+  ", we obtain the desired two first-order equations"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    RowBox[{"transformedEq", "=", 
+      RowBox[{
+        RowBox[{"(", 
+          RowBox[{
+            RowBox[{
+              RowBox[{"Solve", "[", 
+                RowBox[{\({cond1, cond2}\), ",", 
+                  RowBox[{"{", 
+                    RowBox[{
+                      RowBox[{
+                        SuperscriptBox["a", "\[Prime]",
+                          MultilineFunction->None], "[", "t", "]"}], ",", 
+                      RowBox[{
+                        SuperscriptBox["\[Beta]", "\[Prime]",
+                          MultilineFunction->None], "[", "t", "]"}]}], 
+                    "}"}]}], "]"}], "[", \([1]\), "]"}], "//", "Simplify"}], 
+          ")"}], "/.", \(Rule -> Equal\)}]}]], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        RowBox[{
+          RowBox[{
+            SuperscriptBox["a", "\[Prime]",
+              MultilineFunction->None], "[", "t", "]"}], "==", 
+          \(\[Epsilon]\ a[t]\^3\ Cos[t + \[Beta][t]]\^3\ 
+            Sin[t + \[Beta][t]]\)}], ",", 
+        RowBox[{
+          RowBox[{
+            SuperscriptBox["\[Beta]", "\[Prime]",
+              MultilineFunction->None], "[", "t", "]"}], "==", 
+          \(\[Epsilon]\ a[t]\^2\ Cos[t + \[Beta][t]]\^4\)}]}], "}"}]], 
+  "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "if ",
+  Cell[BoxData[
+      \(TraditionalForm\`a \[NotCongruent] 0\)]],
+  ". Thus, the original second-order ",
+  StyleBox["DuffingEq",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " for ",
+  Cell[BoxData[
+      \(TraditionalForm\`u[t]\)]],
+  " has been replaced by two first-order equations for ",
+  Cell[BoxData[
+      \(TraditionalForm\`a[t]\)]],
+  " and ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Beta][t]\)]],
+  ". We emphasize that no approximations have been made in deriving ",
+  StyleBox["transformedEq",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  ". Comparing ",
+  StyleBox["transformedEq",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " with ",
+  StyleBox["DuffingEq",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  ", we find that the transformed equations are more nonlinear than the \
+original equation. Then, the question arises what is the value of this \
+transformation? The answer depends on the value of \[Epsilon]. If \[Epsilon] \
+is small, the major parts of ",
+  StyleBox["a",
+    FontSlant->"Italic"],
+  " and \[Beta] vary more slowly with ",
+  StyleBox["t",
+    FontSlant->"Italic"],
+  " than ",
+  StyleBox["u. ",
+    FontSlant->"Italic"],
+  "This fact can be used to advantage analytically and numerically. The \
+analytical advantage is utilized in the method of averaging, as discussed in \
+the next section. Numerically, it is advantageous to solve the transformed \
+equations instead of the original equation because a large step size can be \
+used in the integration. This is the reason why astronomers numerically solve \
+the variational equations rather than the original equations. Usually, \
+astronomers and celestial mechanicians refer to this approach as the ",
+  StyleBox["special method of perturbations",
+    FontColor->RGBColor[0, 0, 1]],
+  "."
+}], "Text",
+  CellMargins->{{12, Inherited}, {Inherited, Inherited}},
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["2.6 The Method of Averaging", "Section",
+  CellMargins->{{Inherited, 17.4375}, {Inherited, Inherited}},
+  Evaluatable->False,
+  TextAlignment->Left,
+  TextJustification->1,
+  AspectRatioFixed->True,
+  CellTags->{"ChapterTwo", "ChapterTwo.2", "ChapterTwo.2.1"}],
+
+Cell[TextData[{
+  "In this section, we determine a first-order approximation to the \
+transformed equations obtained in the preceding section. To this end, we \
+rewrite ",
+  StyleBox["transformedEq",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " as"
+}], "Text",
+  CellMargins->{{12, Inherited}, {Inherited, Inherited}},
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(ampEq = TrigReduce\ /@\ transformedEq[\([1]\)]\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{
+        SuperscriptBox["a", "\[Prime]",
+          MultilineFunction->None], "[", "t", "]"}], "==", 
+      \(1\/8\ \((
+          2\ \[Epsilon]\ a[t]\^3\ Sin[2\ t + 2\ \[Beta][t]] + 
+            \[Epsilon]\ a[t]\^3\ Sin[4\ t + 4\ \[Beta][t]])\)\)}]], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(phaseEq = TrigReduce\ /@\ transformedEq[\([2]\)]\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{
+      RowBox[{
+        SuperscriptBox["\[Beta]", "\[Prime]",
+          MultilineFunction->None], "[", "t", "]"}], "==", 
+      \(1\/8\ \((
+          3\ \[Epsilon]\ a[t]\^2 + 
+            4\ \[Epsilon]\ a[t]\^2\ Cos[2\ t + 2\ \[Beta][t]] + 
+            \[Epsilon]\ a[t]\^2\ Cos[4\ t + 4\ \[Beta][t]])\)\)}]], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "The major parts of ",
+  StyleBox["a",
+    FontSlant->"Italic"],
+  " and \[Beta] are slowly varying functions of time if \[Epsilon] is small. \
+Hence, they change very little during the time interval \[Pi] (the period of \
+the circular functions) and, to the first approximation, they can be \
+considered constant in the interval ",
+  Cell[BoxData[
+      \(TraditionalForm\`\([0, \[Pi]]\)\)]],
+  ". Hence, we replace ",
+  Cell[BoxData[
+      \(a[t]\)]],
+  " and ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Beta][t]\)]],
+  " on the right-hand sides of ",
+  StyleBox["ampEq",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " and ",
+  StyleBox["phaseEq",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " with time-independent ",
+  Cell[BoxData[
+      \(TraditionalForm\`a\)]],
+  " and ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Beta]\)]],
+  " and obtain"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(ampEq[\([2]\)] = ampEq[\([2]\)] /. \((Reverse\ /@\ tdepRule)\)\)], 
+  "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \(1\/8\ 
+      \((2\ a\^3\ \[Epsilon]\ Sin[2\ t + 2\ \[Beta]] + 
+          a\^3\ \[Epsilon]\ Sin[4\ t + 4\ \[Beta]])\)\)], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(phaseEq[\([2]\)] = phaseEq[\([2]\)] /. \((Reverse\ /@\ tdepRule)\)\)], 
+  "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \(1\/8\ 
+      \((3\ a\^2\ \[Epsilon] + 4\ a\^2\ \[Epsilon]\ Cos[2\ t + 2\ \[Beta]] + 
+          a\^2\ \[Epsilon]\ Cos[4\ t + 4\ \[Beta]])\)\)], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "We average the right-hand sides of ",
+  StyleBox["ampEq",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " and ",
+  StyleBox["phaseEq",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " over the interval ",
+  Cell[BoxData[
+      \(TraditionalForm\`\([0, \[Pi]]\)\)]],
+  " and obtain"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(list26a = 
+      \(1\/\[Pi]\ Integrate[#, {t, 0, \[Pi]}]&\)\ /@
+          \ {ampEq[\([2]\)], phaseEq[\([2]\)]} // Expand\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \(Integrate::"gener" \( : \ \) "Unable to check convergence"\)], "Message",\
+
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \(Integrate::"gener" \( : \ \) "Unable to check convergence"\)], "Message",\
+
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \({0, \(3\ a\^2\ \[Epsilon]\)\/8}\)], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell["It follows from the above result that", "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(averagingEq = {\(a\^\[Prime]\)[t], \(\[Beta]\^\[Prime]\)[t]} == 
+          list26a // Thread\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    RowBox[{"{", 
+      RowBox[{
+        RowBox[{
+          RowBox[{
+            SuperscriptBox["a", "\[Prime]",
+              MultilineFunction->None], "[", "t", "]"}], "==", "0"}], ",", 
+        RowBox[{
+          RowBox[{
+            SuperscriptBox["\[Beta]", "\[Prime]",
+              MultilineFunction->None], "[", "t", "]"}], "==", 
+          \(\(3\ a\^2\ \[Epsilon]\)\/8\)}]}], "}"}]], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "This averaging method is usually referred to as the ",
+  StyleBox["Krylov-Bogoliubov",
+    FontColor->RGBColor[0, 0, 1]],
+  " or ",
+  StyleBox["van der Pol technique",
+    FontColor->RGBColor[0, 0, 1]],
+  "."
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell["Solving the averaged equations yields", "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(rule26a = 
+      \(DSolve[averagingEq, {a[t], \[Beta][t]}, t]\)[\([1]\)] /. {
+          C[1] -> a\_0, C[2] -> \[Beta]\_0}\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \({a[t] \[Rule] a\_0, 
+      \[Beta][t] \[Rule] 1\/8\ \((3\ a\^2\ t\ \[Epsilon] + 8\ \[Beta]\_0)\)}
+      \)], "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell[TextData[{
+  "Substituting for ",
+  Cell[BoxData[
+      \(TraditionalForm\`a[t]\)]],
+  " and ",
+  Cell[BoxData[
+      \(TraditionalForm\`\[Beta][t]\)]],
+  " into ",
+  StyleBox["usolEq",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  ", we obtain, to the first approximation, that"
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+    \(\(\(usolEq /. tdepRule\) /. rule26a\) /. 
+      Cos[arg_] :> Cos[Expand[arg]]\)], "Input",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[BoxData[
+    \(u[t] == Cos[t + 3\/8\ a\^2\ t\ \[Epsilon] + \[Beta]\_0]\ a\_0\)], 
+  "Output",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]],
+
+Cell["\<\
+in agreement with the solutions obtained by using the Lindstedt-Poincar\
+\[EAcute] technique and the method of multiple scales.\
+\>", "Text",
+  TextAlignment->Left,
+  TextJustification->1],
+
+Cell[TextData[{
+  "Before closing this section, we note that one can arrive at the final \
+results in ",
+  StyleBox["ampEq",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " and ",
+  StyleBox["phaseEq",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " without going through the averaging process. The right-hand sides of ",
+  StyleBox["ampEq",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " and ",
+  StyleBox["phaseEq",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " are the sum of two groups of terms \[LongDash] a group that is a linear \
+combination of fast varying terms and a group that is a linear combination of \
+slowly varying terms. Then, to the first approximation, ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(a\^\[Prime]\)[t]\)]],
+  " in ",
+  StyleBox["ampEq",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " is equal to the slowly varying group on its right-hand side, which is \
+zero. And, to the first approximation, ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(\[Beta]\^\[Prime]\)[t]\)]],
+  " in ",
+  StyleBox["phaseEq",
+    FontWeight->"Bold",
+    FontColor->RGBColor[1, 0, 1]],
+  " is equal to the slowly varying group on its right-hand side, which is ",
+  Cell[BoxData[
+      \(TraditionalForm\`\(3\/8\) \[Epsilon]\ a\^2\)]],
+  "."
+}], "Text",
+  TextAlignment->Left,
+  TextJustification->1]
+}, Open  ]]
+}, Open  ]]
+},
+FrontEndVersion->"Microsoft Windows 3.0",
+ScreenRectangle->{{0, 1024}, {0, 712}},
+WindowToolbars->{"RulerBar", "EditBar"},
+WindowSize->{719, 568},
+WindowMargins->{{0, Automatic}, {Automatic, 5}},
+PrintingCopies->1,
+PrintingStartingPageNumber->25,
+PrintingPageRange->{27, 27},
+PageHeaders->{{Cell[ 
+        TextData[ {
+          CounterBox[ "Page"]}], "PageNumber"], Inherited, Cell[ 
+        TextData[ {
+          ValueBox[ "FileName"]}], "Header"]}, {Cell[ 
+        TextData[ {
+          ValueBox[ "FileName"]}], "Header"], Inherited, Cell[ 
+        TextData[ {
+          CounterBox[ "Page"]}], "PageNumber"]}},
+PrintingOptions->{"FirstPageHeader"->False,
+"FacingPages"->True},
+Magnification->1,
+StyleDefinitions -> "Default.nb"
+]
+
+
+(***********************************************************************
+Cached data follows.  If you edit this Notebook file directly, not using
+Mathematica, you must remove the line containing CacheID at the top of 
+the file.  The cache data will then be recreated when you save this file 
+from within Mathematica.
+***********************************************************************)
+
+(*CellTagsOutline
+CellTagsIndex->{
+  "ChapterTwo"->{
+    Cell[2291, 78, 370, 9, 33, "Text",
+      Evaluatable->False,
+      CellTags->{"ChapterTwo", "ChapterTwo.1", "ChapterTwo.1-1"}],
+    Cell[2877, 96, 1731, 62, 90, "Text",
+      Evaluatable->False,
+      CellTags->{"ChapterTwo", "ChapterTwo.1", "ChapterTwo.1-3"}],
+    Cell[4865, 173, 828, 28, 52, "Text",
+      Evaluatable->False,
+      CellTags->{"ChapterTwo", "ChapterTwo.1", "ChapterTwo.1-3"}],
+    Cell[6048, 215, 658, 23, 52, "Text",
+      Evaluatable->False,
+      CellTags->{"ChapterTwo", "ChapterTwo.1", "ChapterTwo.1-3"}],
+    Cell[6954, 253, 253, 6, 33, "Text",
+      Evaluatable->False,
+      CellTags->{"ChapterTwo", "ChapterTwo.1", "ChapterTwo.1-3"}],
+    Cell[7210, 261, 575, 20, 33, "Text",
+      Evaluatable->False,
+      CellTags->{"ChapterTwo", "ChapterTwo.1", "ChapterTwo.1-3"}],
+    Cell[23127, 823, 250, 6, 46, "Section",
+      Evaluatable->False,
+      CellTags->{"ChapterTwo", "ChapterTwo.1"}],
+    Cell[44725, 1612, 283, 6, 46, "Section",
+      Evaluatable->False,
+      CellTags->{"ChapterTwo", "ChapterTwo.2", "ChapterTwo.2.1"}],
+    Cell[59980, 2162, 272, 6, 46, "Section",
+      Evaluatable->False,
+      CellTags->{"ChapterTwo", "ChapterTwo.2", "ChapterTwo.2.1"}],
+    Cell[65796, 2365, 279, 6, 43, "Subsection",
+      Evaluatable->False,
+      CellTags->{"ChapterTwo", "ChapterTwo.2", "ChapterTwo.2.1"}],
+    Cell[92280, 3299, 278, 6, 43, "Subsection",
+      Evaluatable->False,
+      CellTags->{"ChapterTwo", "ChapterTwo.2", "ChapterTwo.2.1"}],
+    Cell[110010, 3907, 281, 6, 43, "Subsection",
+      Evaluatable->False,
+      CellTags->{"ChapterTwo", "ChapterTwo.2", "ChapterTwo.2.1"}],
+    Cell[123009, 4353, 266, 6, 46, "Section",
+      Evaluatable->False,
+      CellTags->{"ChapterTwo", "ChapterTwo.2", "ChapterTwo.2.1"}],
+    Cell[136529, 4836, 266, 6, 46, "Section",
+      Evaluatable->False,
+      CellTags->{"ChapterTwo", "ChapterTwo.2", "ChapterTwo.2.1"}]},
+  "ChapterTwo.1"->{
+    Cell[2291, 78, 370, 9, 33, "Text",
+      Evaluatable->False,
+      CellTags->{"ChapterTwo", "ChapterTwo.1", "ChapterTwo.1-1"}],
+    Cell[2877, 96, 1731, 62, 90, "Text",
+      Evaluatable->False,
+      CellTags->{"ChapterTwo", "ChapterTwo.1", "ChapterTwo.1-3"}],
+    Cell[4865, 173, 828, 28, 52, "Text",
+      Evaluatable->False,
+      CellTags->{"ChapterTwo", "ChapterTwo.1", "ChapterTwo.1-3"}],
+    Cell[6048, 215, 658, 23, 52, "Text",
+      Evaluatable->False,
+      CellTags->{"ChapterTwo", "ChapterTwo.1", "ChapterTwo.1-3"}],
+    Cell[6954, 253, 253, 6, 33, "Text",
+      Evaluatable->False,
+      CellTags->{"ChapterTwo", "ChapterTwo.1", "ChapterTwo.1-3"}],
+    Cell[7210, 261, 575, 20, 33, "Text",
+      Evaluatable->False,
+      CellTags->{"ChapterTwo", "ChapterTwo.1", "ChapterTwo.1-3"}],
+    Cell[23127, 823, 250, 6, 46, "Section",
+      Evaluatable->False,
+      CellTags->{"ChapterTwo", "ChapterTwo.1"}]},
+  "ChapterTwo.1-1"->{
+    Cell[2291, 78, 370, 9, 33, "Text",
+      Evaluatable->False,
+      CellTags->{"ChapterTwo", "ChapterTwo.1", "ChapterTwo.1-1"}]},
+  "ChapterTwo.1-3"->{
+    Cell[2877, 96, 1731, 62, 90, "Text",
+      Evaluatable->False,
+      CellTags->{"ChapterTwo", "ChapterTwo.1", "ChapterTwo.1-3"}],
+    Cell[4865, 173, 828, 28, 52, "Text",
+      Evaluatable->False,
+      CellTags->{"ChapterTwo", "ChapterTwo.1", "ChapterTwo.1-3"}],
+    Cell[6048, 215, 658, 23, 52, "Text",
+      Evaluatable->False,
+      CellTags->{"ChapterTwo", "ChapterTwo.1", "ChapterTwo.1-3"}],
+    Cell[6954, 253, 253, 6, 33, "Text",
+      Evaluatable->False,
+      CellTags->{"ChapterTwo", "ChapterTwo.1", "ChapterTwo.1-3"}],
+    Cell[7210, 261, 575, 20, 33, "Text",
+      Evaluatable->False,
+      CellTags->{"ChapterTwo", "ChapterTwo.1", "ChapterTwo.1-3"}]},
+  "ChapterTwo.2"->{
+    Cell[44725, 1612, 283, 6, 46, "Section",
+      Evaluatable->False,
+      CellTags->{"ChapterTwo", "ChapterTwo.2", "ChapterTwo.2.1"}],
+    Cell[59980, 2162, 272, 6, 46, "Section",
+      Evaluatable->False,
+      CellTags->{"ChapterTwo", "ChapterTwo.2", "ChapterTwo.2.1"}],
+    Cell[65796, 2365, 279, 6, 43, "Subsection",
+      Evaluatable->False,
+      CellTags->{"ChapterTwo", "ChapterTwo.2", "ChapterTwo.2.1"}],
+    Cell[92280, 3299, 278, 6, 43, "Subsection",
+      Evaluatable->False,
+      CellTags->{"ChapterTwo", "ChapterTwo.2", "ChapterTwo.2.1"}],
+    Cell[110010, 3907, 281, 6, 43, "Subsection",
+      Evaluatable->False,
+      CellTags->{"ChapterTwo", "ChapterTwo.2", "ChapterTwo.2.1"}],
+    Cell[123009, 4353, 266, 6, 46, "Section",
+      Evaluatable->False,
+      CellTags->{"ChapterTwo", "ChapterTwo.2", "ChapterTwo.2.1"}],
+    Cell[136529, 4836, 266, 6, 46, "Section",
+      Evaluatable->False,
+      CellTags->{"ChapterTwo", "ChapterTwo.2", "ChapterTwo.2.1"}]},
+  "ChapterTwo.2.1"->{
+    Cell[44725, 1612, 283, 6, 46, "Section",
+      Evaluatable->False,
+      CellTags->{"ChapterTwo", "ChapterTwo.2", "ChapterTwo.2.1"}],
+    Cell[59980, 2162, 272, 6, 46, "Section",
+      Evaluatable->False,
+      CellTags->{"ChapterTwo", "ChapterTwo.2", "ChapterTwo.2.1"}],
+    Cell[65796, 2365, 279, 6, 43, "Subsection",
+      Evaluatable->False,
+      CellTags->{"ChapterTwo", "ChapterTwo.2", "ChapterTwo.2.1"}],
+    Cell[92280, 3299, 278, 6, 43, "Subsection",
+      Evaluatable->False,
+      CellTags->{"ChapterTwo", "ChapterTwo.2", "ChapterTwo.2.1"}],
+    Cell[110010, 3907, 281, 6, 43, "Subsection",
+      Evaluatable->False,
+      CellTags->{"ChapterTwo", "ChapterTwo.2", "ChapterTwo.2.1"}],
+    Cell[123009, 4353, 266, 6, 46, "Section",
+      Evaluatable->False,
+      CellTags->{"ChapterTwo", "ChapterTwo.2", "ChapterTwo.2.1"}],
+    Cell[136529, 4836, 266, 6, 46, "Section",
+      Evaluatable->False,
+      CellTags->{"ChapterTwo", "ChapterTwo.2", "ChapterTwo.2.1"}]}
+  }
+*)
+
+(*CellTagsIndex
+CellTagsIndex->{
+  {"ChapterTwo", 146134, 5184},
+  {"ChapterTwo.1", 148053, 5227},
+  {"ChapterTwo.1-1", 148996, 5249},
+  {"ChapterTwo.1-3", 149151, 5253},
+  {"ChapterTwo.2", 149841, 5269},
+  {"ChapterTwo.2.1", 150842, 5291}
+  }
+*)
+
+(*NotebookFileOutline
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[1731, 51, 102, 5, 150, "Title"],
+Cell[1836, 58, 100, 3, 30, "Input"],
+Cell[1939, 63, 119, 2, 33, "Text"],
+Cell[2061, 67, 112, 3, 30, "Input"],
+
+Cell[CellGroupData[{
+Cell[2198, 74, 90, 2, 53, "Section"],
+Cell[2291, 78, 370, 9, 33, "Text",
+  Evaluatable->False,
+  CellTags->{"ChapterTwo", "ChapterTwo.1", "ChapterTwo.1-1"}],
+Cell[2664, 89, 210, 5, 50, "Input"],
+Cell[2877, 96, 1731, 62, 90, "Text",
+  Evaluatable->False,
+  CellTags->{"ChapterTwo", "ChapterTwo.1", "ChapterTwo.1-3"}],
+
+Cell[CellGroupData[{
+Cell[4633, 162, 106, 3, 30, "Input"],
+Cell[4742, 167, 108, 3, 29, "Output"]
+}, Open  ]],
+Cell[4865, 173, 828, 28, 52, "Text",
+  Evaluatable->False,
+  CellTags->{"ChapterTwo", "ChapterTwo.1", "ChapterTwo.1-3"}],
+Cell[5696, 203, 349, 10, 30, "Input"],
+Cell[6048, 215, 658, 23, 52, "Text",
+  Evaluatable->False,
+  CellTags->{"ChapterTwo", "ChapterTwo.1", "ChapterTwo.1-3"}],
+
+Cell[CellGroupData[{
+Cell[6731, 242, 108, 3, 30, "Input"],
+Cell[6842, 247, 97, 3, 29, "Output"]
+}, Open  ]],
+Cell[6954, 253, 253, 6, 33, "Text",
+  Evaluatable->False,
+  CellTags->{"ChapterTwo", "ChapterTwo.1", "ChapterTwo.1-3"}],
+Cell[7210, 261, 575, 20, 33, "Text",
+  Evaluatable->False,
+  CellTags->{"ChapterTwo", "ChapterTwo.1", "ChapterTwo.1-3"}],
+
+Cell[CellGroupData[{
+Cell[7810, 285, 119, 3, 30, "Input"],
+Cell[7932, 290, 1412, 36, 42, "Output"]
+}, Open  ]],
+Cell[9359, 329, 309, 11, 33, "Text"],
+
+Cell[CellGroupData[{
+Cell[9693, 344, 102, 3, 30, "Input"],
+Cell[9798, 349, 705, 17, 42, "Output"]
+}, Open  ]],
+Cell[10518, 369, 354, 14, 33, "Text"],
+
+Cell[CellGroupData[{
+Cell[10897, 387, 134, 3, 30, "Input"],
+Cell[11034, 392, 876, 22, 42, "Output"]
+}, Open  ]],
+Cell[11925, 417, 1594, 48, 109, "Text"],
+
+Cell[CellGroupData[{
+Cell[13544, 469, 168, 4, 30, "Input"],
+Cell[13715, 475, 390, 10, 29, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[14142, 490, 189, 4, 30, "Input"],
+Cell[14334, 496, 450, 12, 29, "Output"]
+}, Open  ]],
+Cell[14799, 511, 464, 15, 52, "Text"],
+
+Cell[CellGroupData[{
+Cell[15288, 530, 119, 3, 22, "Input"],
+Cell[15410, 535, 826, 22, 28, "Output"]
+}, Open  ]],
+Cell[16251, 560, 359, 14, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[16635, 578, 127, 3, 22, "Input"],
+Cell[16765, 583, 313, 9, 22, "Output"]
+}, Open  ]],
+Cell[17093, 595, 330, 13, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[17448, 612, 144, 4, 22, "Input"],
+Cell[17595, 618, 765, 21, 28, "Output"]
+}, Open  ]],
+Cell[18375, 642, 322, 9, 40, "Text"],
+
+Cell[CellGroupData[{
+Cell[18722, 655, 106, 3, 22, "Input"],
+Cell[18831, 660, 282, 8, 22, "Output"]
+}, Open  ]],
+Cell[19128, 671, 334, 13, 26, "Text"],
+Cell[19465, 686, 699, 22, 54, "Text"],
+
+Cell[CellGroupData[{
+Cell[20189, 712, 161, 5, 22, "Input"],
+Cell[20353, 719, 434, 12, 28, "Output"]
+}, Open  ]],
+Cell[20802, 734, 509, 18, 40, "Text"],
+
+Cell[CellGroupData[{
+Cell[21336, 756, 131, 3, 22, "Input"],
+Cell[21470, 761, 360, 10, 22, "Output"]
+}, Open  ]],
+Cell[21845, 774, 533, 18, 40, "Text"],
+
+Cell[CellGroupData[{
+Cell[22403, 796, 202, 5, 22, "Input"],
+Cell[22608, 803, 282, 8, 22, "Output"]
+}, Open  ]],
+Cell[22905, 814, 185, 4, 26, "Text"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[23127, 823, 250, 6, 46, "Section",
+  Evaluatable->False,
+  CellTags->{"ChapterTwo", "ChapterTwo.1"}],
+Cell[23380, 831, 224, 8, 26, "Text"],
+Cell[23607, 841, 129, 3, 22, "Input"],
+Cell[23739, 846, 643, 19, 54, "Text"],
+Cell[24385, 867, 431, 14, 40, "Text"],
+
+Cell[CellGroupData[{
+Cell[24841, 885, 132, 3, 22, "Input"],
+Cell[24976, 890, 505, 15, 22, "Output"]
+}, Open  ]],
+Cell[25496, 908, 274, 10, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[25795, 922, 131, 3, 22, "Input"],
+Cell[25929, 927, 119, 3, 22, "Output"]
+}, Open  ]],
+Cell[26063, 933, 543, 16, 40, "Text"],
+Cell[26609, 951, 167, 4, 22, "Input"],
+Cell[26779, 957, 223, 8, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[27027, 969, 99, 3, 22, "Input"],
+Cell[27129, 974, 110, 3, 22, "Output"]
+}, Open  ]],
+Cell[27254, 980, 90, 2, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[27369, 986, 99, 3, 22, "Input"],
+Cell[27471, 991, 167, 4, 22, "Output"]
+}, Open  ]],
+Cell[27653, 998, 90, 2, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[27768, 1004, 99, 3, 22, "Input"],
+Cell[27870, 1009, 224, 5, 22, "Output"]
+}, Open  ]],
+Cell[28109, 1017, 462, 15, 40, "Text"],
+
+Cell[CellGroupData[{
+Cell[28596, 1036, 129, 3, 22, "Input"],
+Cell[28728, 1041, 679, 17, 22, "Output"]
+}, Open  ]],
+Cell[29422, 1061, 672, 20, 40, "Text"],
+
+Cell[CellGroupData[{
+Cell[30119, 1085, 133, 3, 22, "Input"],
+Cell[30255, 1090, 520, 14, 22, "Output"]
+}, Open  ]],
+Cell[30790, 1107, 291, 8, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[31106, 1119, 149, 4, 22, "Input"],
+Cell[31258, 1125, 574, 16, 22, "Output"]
+}, Open  ]],
+Cell[31847, 1144, 598, 19, 40, "Text"],
+Cell[32448, 1165, 258, 8, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[32731, 1177, 127, 3, 22, "Input"],
+Cell[32861, 1182, 126, 3, 22, "Output"]
+}, Open  ]],
+Cell[33002, 1188, 422, 13, 40, "Text"],
+
+Cell[CellGroupData[{
+Cell[33449, 1205, 270, 6, 34, "Input"],
+Cell[33722, 1213, 124, 3, 22, "Output"]
+}, Open  ]],
+Cell[33861, 1219, 585, 21, 40, "Text"],
+Cell[34449, 1242, 418, 15, 40, "Text"],
+
+Cell[CellGroupData[{
+Cell[34892, 1261, 168, 5, 22, "Input"],
+Cell[35063, 1268, 312, 7, 43, "Output"]
+}, Open  ]],
+Cell[35390, 1278, 688, 24, 40, "Text"],
+
+Cell[CellGroupData[{
+Cell[36103, 1306, 216, 6, 22, "Input"],
+Cell[36322, 1314, 222, 5, 28, "Output"]
+}, Open  ]],
+Cell[36559, 1322, 293, 9, 40, "Text"],
+
+Cell[CellGroupData[{
+Cell[36877, 1335, 146, 4, 22, "Input"],
+Cell[37026, 1341, 305, 8, 28, "Output"]
+}, Open  ]],
+Cell[37346, 1352, 420, 17, 26, "Text"],
+Cell[37769, 1371, 941, 33, 54, "Text"],
+
+Cell[CellGroupData[{
+Cell[38735, 1408, 108, 3, 22, "Input"],
+Cell[38846, 1413, 302, 9, 22, "Output"]
+}, Open  ]],
+Cell[39163, 1425, 396, 15, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[39584, 1444, 128, 3, 22, "Input"],
+Cell[39715, 1449, 421, 10, 49, "Output"]
+}, Open  ]],
+Cell[40151, 1462, 594, 23, 40, "Text"],
+
+Cell[CellGroupData[{
+Cell[40770, 1489, 165, 5, 22, "Input"],
+Cell[40938, 1496, 347, 6, 43, "Output"]
+}, Open  ]],
+Cell[41300, 1505, 563, 24, 26, "Text"],
+Cell[41866, 1531, 487, 8, 69, "Text"],
+
+Cell[CellGroupData[{
+Cell[42378, 1543, 148, 4, 22, "Input"],
+Cell[42529, 1549, 220, 5, 28, "Output"]
+}, Open  ]],
+Cell[42764, 1557, 1924, 50, 126, "Text"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[44725, 1612, 283, 6, 46, "Section",
+  Evaluatable->False,
+  CellTags->{"ChapterTwo", "ChapterTwo.2", "ChapterTwo.2.1"}],
+Cell[45011, 1620, 507, 9, 69, "Text"],
+Cell[45521, 1631, 490, 10, 54, "Text"],
+
+Cell[CellGroupData[{
+Cell[46036, 1645, 482, 13, 34, "Input"],
+Cell[46521, 1660, 348, 9, 22, "Output"]
+}, Open  ]],
+Cell[46884, 1672, 566, 21, 40, "Text"],
+Cell[47453, 1695, 193, 6, 22, "Input"],
+Cell[47649, 1703, 680, 21, 54, "Text"],
+Cell[48332, 1726, 653, 24, 40, "Text"],
+
+Cell[CellGroupData[{
+Cell[49010, 1754, 215, 5, 22, "Input"],
+Cell[49228, 1761, 764, 18, 22, "Output"]
+}, Open  ]],
+Cell[50007, 1782, 292, 11, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[50324, 1797, 149, 4, 22, "Input"],
+Cell[50476, 1803, 817, 20, 22, "Output"]
+}, Open  ]],
+Cell[51308, 1826, 255, 8, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[51588, 1838, 242, 6, 22, "Input"],
+Cell[51833, 1846, 166, 5, 22, "Output"]
+}, Open  ]],
+Cell[52014, 1854, 386, 14, 40, "Text"],
+Cell[52403, 1870, 289, 11, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[52717, 1885, 125, 3, 22, "Input"],
+Cell[52845, 1890, 390, 11, 22, "Output"]
+}, Open  ]],
+Cell[53250, 1904, 91, 2, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[53366, 1910, 181, 5, 22, "Input"],
+Cell[53550, 1917, 427, 10, 43, "Output"]
+}, Open  ]],
+Cell[53992, 1930, 566, 16, 54, "Text"],
+
+Cell[CellGroupData[{
+Cell[54583, 1950, 201, 5, 22, "Input"],
+Cell[54787, 1957, 117, 3, 29, "Output"]
+}, Open  ]],
+Cell[54919, 1963, 261, 11, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[55205, 1978, 117, 3, 22, "Input"],
+Cell[55325, 1983, 150, 4, 28, "Output"]
+}, Open  ]],
+Cell[55490, 1990, 913, 27, 69, "Text"],
+
+Cell[CellGroupData[{
+Cell[56428, 2021, 144, 4, 22, "Input"],
+Cell[56575, 2027, 220, 5, 28, "Output"]
+}, Open  ]],
+Cell[56810, 2035, 396, 14, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[57231, 2053, 170, 4, 22, "Input"],
+Cell[57404, 2059, 117, 3, 29, "Output"]
+}, Open  ]],
+Cell[57536, 2065, 369, 16, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[57930, 2085, 168, 5, 22, "Input"],
+Cell[58101, 2092, 170, 4, 28, "Output"]
+}, Open  ]],
+Cell[58286, 2099, 459, 16, 40, "Text"],
+
+Cell[CellGroupData[{
+Cell[58770, 2119, 278, 7, 34, "Input"],
+Cell[59051, 2128, 241, 6, 28, "Output"]
+}, Open  ]],
+Cell[59307, 2137, 636, 20, 40, "Text"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[59980, 2162, 272, 6, 46, "Section",
+  Evaluatable->False,
+  CellTags->{"ChapterTwo", "ChapterTwo.2", "ChapterTwo.2.1"}],
+Cell[60255, 2170, 3571, 123, 140, "Text"],
+Cell[63829, 2295, 456, 15, 22, "Input"],
+Cell[64288, 2312, 117, 3, 22, "Input"],
+Cell[64408, 2317, 158, 3, 26, "Text"],
+Cell[64569, 2322, 309, 7, 34, "Input"],
+Cell[64881, 2331, 310, 13, 26, "Text"],
+Cell[65194, 2346, 577, 15, 55, "Text"],
+
+Cell[CellGroupData[{
+Cell[65796, 2365, 279, 6, 43, "Subsection",
+  Evaluatable->False,
+  CellTags->{"ChapterTwo", "ChapterTwo.2", "ChapterTwo.2.1"}],
+Cell[66078, 2373, 366, 10, 22, "Input"],
+Cell[66447, 2385, 327, 11, 40, "Text"],
+Cell[66777, 2398, 98, 3, 22, "Input"],
+Cell[66878, 2403, 363, 14, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[67266, 2421, 204, 6, 22, "Input"],
+Cell[67473, 2429, 592, 16, 22, "Output"]
+}, Open  ]],
+Cell[68080, 2448, 641, 11, 83, "Text"],
+Cell[68724, 2461, 295, 9, 26, "Text"],
+Cell[69022, 2472, 172, 5, 22, "Input"],
+Cell[69197, 2479, 345, 10, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[69567, 2493, 184, 5, 22, "Input"],
+Cell[69754, 2500, 903, 24, 22, "Output"]
+}, Open  ]],
+Cell[70672, 2527, 226, 8, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[70923, 2539, 150, 4, 22, "Input"],
+Cell[71076, 2545, 989, 27, 22, "Output"]
+}, Open  ]],
+Cell[72080, 2575, 235, 8, 26, "Text"],
+Cell[72318, 2585, 138, 3, 22, "Input"],
+Cell[72459, 2590, 540, 17, 40, "Text"],
+Cell[73002, 2609, 424, 14, 40, "Text"],
+
+Cell[CellGroupData[{
+Cell[73451, 2627, 204, 5, 22, "Input"],
+Cell[73658, 2634, 811, 20, 34, "Output"]
+}, Open  ]],
+Cell[74484, 2657, 324, 9, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[74833, 2670, 144, 4, 22, "Input"],
+Cell[74980, 2676, 622, 14, 41, "Output"]
+}, Open  ]],
+Cell[75617, 2693, 661, 21, 40, "Text"],
+
+Cell[CellGroupData[{
+Cell[76303, 2718, 208, 5, 22, "Input"],
+Cell[76514, 2725, 614, 17, 28, "Output"]
+}, Open  ]],
+Cell[77143, 2745, 427, 17, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[77595, 2766, 580, 15, 22, "Input"],
+Cell[78178, 2783, 484, 14, 28, "Output"]
+}, Open  ]],
+Cell[78677, 2800, 382, 15, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[79084, 2819, 207, 5, 22, "Input"],
+Cell[79294, 2826, 137, 3, 28, "Output"]
+}, Open  ]],
+Cell[79446, 2832, 212, 8, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[79683, 2844, 104, 3, 22, "Input"],
+Cell[79790, 2849, 390, 11, 28, "Output"]
+}, Open  ]],
+Cell[80195, 2863, 211, 8, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[80431, 2875, 196, 5, 22, "Input"],
+Cell[80630, 2882, 170, 4, 28, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[80837, 2891, 230, 6, 22, "Input"],
+Cell[81070, 2899, 262, 7, 28, "Output"]
+}, Open  ]],
+Cell[81347, 2909, 461, 18, 40, "Text"],
+
+Cell[CellGroupData[{
+Cell[81833, 2931, 144, 4, 22, "Input"],
+Cell[81980, 2937, 273, 7, 28, "Output"]
+}, Open  ]],
+Cell[82268, 2947, 164, 5, 26, "Text"],
+Cell[82435, 2954, 403, 13, 40, "Text"],
+Cell[82841, 2969, 469, 13, 40, "Text"],
+Cell[83313, 2984, 165, 5, 22, "Input"],
+Cell[83481, 2991, 223, 10, 26, "Text"],
+Cell[83707, 3003, 1382, 38, 32, "Input"],
+Cell[85092, 3043, 368, 13, 40, "Text"],
+
+Cell[CellGroupData[{
+Cell[85485, 3060, 593, 16, 22, "Input"],
+Cell[86081, 3078, 966, 23, 37, "Output"]
+}, Open  ]],
+Cell[87062, 3104, 483, 14, 40, "Text"],
+
+Cell[CellGroupData[{
+Cell[87570, 3122, 187, 5, 22, "Input"],
+Cell[87760, 3129, 690, 18, 24, "Output"]
+}, Open  ]],
+Cell[88465, 3150, 239, 6, 40, "Text"],
+Cell[88707, 3158, 485, 18, 40, "Text"],
+
+Cell[CellGroupData[{
+Cell[89217, 3180, 173, 5, 22, "Input"],
+Cell[89393, 3187, 485, 13, 28, "Output"]
+}, Open  ]],
+Cell[89893, 3203, 267, 8, 26, "Text"],
+Cell[90163, 3213, 123, 3, 22, "Input"],
+Cell[90289, 3218, 303, 12, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[90617, 3234, 124, 3, 22, "Input"],
+Cell[90744, 3239, 241, 8, 22, "Output"]
+}, Open  ]],
+Cell[91000, 3250, 245, 9, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[91270, 3263, 126, 3, 22, "Input"],
+Cell[91399, 3268, 325, 9, 28, "Output"]
+}, Open  ]],
+Cell[91739, 3280, 228, 6, 40, "Text"],
+Cell[91970, 3288, 273, 6, 40, "Text"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[92280, 3299, 278, 6, 43, "Subsection",
+  Evaluatable->False,
+  CellTags->{"ChapterTwo", "ChapterTwo.2", "ChapterTwo.2.1"}],
+Cell[92561, 3307, 325, 11, 26, "Text"],
+Cell[92889, 3320, 470, 13, 22, "Input"],
+Cell[93362, 3335, 388, 14, 26, "Text"],
+Cell[93753, 3351, 226, 5, 22, "Input"],
+Cell[93982, 3358, 653, 24, 40, "Text"],
+
+Cell[CellGroupData[{
+Cell[94660, 3386, 700, 18, 47, "Input"],
+Cell[95363, 3406, 1865, 48, 35, "Output"]
+}, Open  ]],
+Cell[97243, 3457, 191, 7, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[97459, 3468, 195, 5, 22, "Input"],
+Cell[97657, 3475, 2048, 53, 47, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[99742, 3533, 107, 2, 34, "Subsubsection"],
+Cell[99852, 3537, 117, 2, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[99994, 3543, 129, 3, 22, "Input"],
+Cell[100126, 3548, 599, 17, 22, "Output"]
+}, Open  ]],
+Cell[100740, 3568, 233, 8, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[100998, 3580, 217, 5, 22, "Input"],
+Cell[101218, 3587, 101, 3, 22, "Output"]
+}, Open  ]],
+Cell[101334, 3593, 107, 2, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[101466, 3599, 126, 3, 22, "Input"],
+Cell[101595, 3604, 102, 3, 22, "Output"]
+}, Open  ]],
+Cell[101712, 3610, 277, 8, 26, "Text"],
+Cell[101992, 3620, 171, 4, 22, "Input"],
+Cell[102166, 3626, 142, 4, 22, "Input"],
+Cell[102311, 3632, 219, 8, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[102555, 3644, 193, 5, 22, "Input"],
+Cell[102751, 3651, 87, 3, 22, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[102875, 3659, 175, 5, 22, "Input"],
+Cell[103053, 3666, 87, 3, 22, "Output"]
+}, Open  ]],
+Cell[103155, 3672, 168, 5, 26, "Text"],
+Cell[103326, 3679, 118, 3, 22, "Input"],
+Cell[103447, 3684, 195, 5, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[103667, 3693, 107, 3, 22, "Input"],
+Cell[103777, 3698, 134, 3, 22, "Output"]
+}, Open  ]],
+Cell[103926, 3704, 91, 2, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[104042, 3710, 373, 9, 47, "Input"],
+Cell[104418, 3721, 333, 9, 33, "Output"]
+}, Open  ]],
+Cell[104766, 3733, 206, 5, 40, "Text"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[105009, 3743, 91, 2, 34, "Subsubsection"],
+Cell[105103, 3747, 422, 13, 40, "Text"],
+
+Cell[CellGroupData[{
+Cell[105550, 3764, 284, 7, 48, "Input"],
+Cell[105837, 3773, 1784, 43, 52, "Output"]
+}, Open  ]],
+Cell[107636, 3819, 473, 13, 54, "Text"],
+
+Cell[CellGroupData[{
+Cell[108134, 3836, 150, 4, 22, "Input"],
+Cell[108287, 3842, 493, 14, 22, "Output"]
+}, Open  ]],
+Cell[108795, 3859, 180, 5, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[109000, 3868, 128, 3, 22, "Input"],
+Cell[109131, 3873, 314, 9, 22, "Output"]
+}, Open  ]],
+Cell[109460, 3885, 501, 16, 40, "Text"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[110010, 3907, 281, 6, 43, "Subsection",
+  Evaluatable->False,
+  CellTags->{"ChapterTwo", "ChapterTwo.2", "ChapterTwo.2.1"}],
+Cell[110294, 3915, 378, 10, 40, "Text"],
+Cell[110675, 3927, 206, 5, 22, "Input"],
+Cell[110884, 3934, 79, 2, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[110988, 3940, 183, 5, 22, "Input"],
+Cell[111174, 3947, 824, 22, 28, "Output"]
+}, Open  ]],
+Cell[112013, 3972, 254, 8, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[112292, 3984, 157, 4, 22, "Input"],
+Cell[112452, 3990, 290, 8, 22, "Output"]
+}, Open  ]],
+Cell[112757, 4001, 717, 28, 40, "Text"],
+
+Cell[CellGroupData[{
+Cell[113499, 4033, 198, 5, 22, "Input"],
+Cell[113700, 4040, 440, 10, 28, "Output"]
+}, Open  ]],
+Cell[114155, 4053, 286, 9, 26, "Text"],
+Cell[114444, 4064, 292, 8, 23, "Input"],
+Cell[114739, 4074, 285, 9, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[115049, 4087, 793, 19, 61, "Input"],
+Cell[115845, 4108, 1173, 29, 48, "Output"]
+}, Open  ]],
+Cell[117033, 4140, 225, 8, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[117283, 4152, 162, 5, 22, "Input"],
+Cell[117448, 4159, 1283, 32, 63, "Output"]
+}, Open  ]],
+Cell[118746, 4194, 232, 8, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[119003, 4206, 195, 5, 22, "Input"],
+Cell[119201, 4213, 137, 3, 22, "Output"]
+}, Open  ]],
+Cell[119353, 4219, 99, 2, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[119477, 4225, 182, 6, 22, "Input"],
+Cell[119662, 4233, 156, 4, 22, "Output"]
+}, Open  ]],
+Cell[119833, 4240, 213, 7, 26, "Text"],
+Cell[120049, 4249, 220, 5, 22, "Input"],
+Cell[120272, 4256, 497, 17, 40, "Text"],
+
+Cell[CellGroupData[{
+Cell[120794, 4277, 306, 7, 34, "Input"],
+Cell[121103, 4286, 786, 19, 41, "Output"]
+}, Open  ]],
+Cell[121904, 4308, 254, 8, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[122183, 4320, 141, 4, 22, "Input"],
+Cell[122327, 4326, 278, 8, 28, "Output"]
+}, Open  ]],
+Cell[122620, 4337, 340, 10, 40, "Text"]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[123009, 4353, 266, 6, 46, "Section",
+  Evaluatable->False,
+  CellTags->{"ChapterTwo", "ChapterTwo.2", "ChapterTwo.2.1"}],
+Cell[123278, 4361, 382, 8, 54, "Text"],
+Cell[123663, 4371, 366, 10, 22, "Input"],
+Cell[124032, 4383, 258, 8, 26, "Text"],
+Cell[124293, 4393, 122, 3, 22, "Input"],
+Cell[124418, 4398, 371, 14, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[124814, 4416, 101, 3, 22, "Input"],
+Cell[124918, 4421, 237, 7, 22, "Output"]
+}, Open  ]],
+Cell[125170, 4431, 481, 18, 26, "Text"],
+Cell[125654, 4451, 131, 3, 22, "Input"],
+Cell[125788, 4456, 72, 2, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[125885, 4462, 108, 3, 22, "Input"],
+Cell[125996, 4467, 114, 3, 22, "Output"]
+}, Open  ]],
+Cell[126125, 4473, 1985, 64, 112, "Text"],
+Cell[128113, 4539, 401, 17, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[128539, 4560, 102, 3, 22, "Input"],
+Cell[128644, 4565, 662, 18, 22, "Output"]
+}, Open  ]],
+Cell[129321, 4586, 285, 12, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[129631, 4602, 162, 5, 22, "Input"],
+Cell[129796, 4609, 482, 13, 22, "Output"]
+}, Open  ]],
+Cell[130293, 4625, 257, 11, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[130575, 4640, 113, 3, 22, "Input"],
+Cell[130691, 4645, 669, 18, 22, "Output"]
+}, Open  ]],
+Cell[131375, 4666, 523, 22, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[131923, 4692, 164, 5, 22, "Input"],
+Cell[132090, 4699, 536, 13, 22, "Output"]
+}, Open  ]],
+Cell[132641, 4715, 469, 18, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[133135, 4737, 781, 19, 22, "Input"],
+Cell[133919, 4758, 572, 16, 22, "Output"]
+}, Open  ]],
+Cell[134506, 4777, 1986, 54, 140, "Text"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[136529, 4836, 266, 6, 46, "Section",
+  Evaluatable->False,
+  CellTags->{"ChapterTwo", "ChapterTwo.2", "ChapterTwo.2.1"}],
+Cell[136798, 4844, 383, 11, 40, "Text"],
+
+Cell[CellGroupData[{
+Cell[137206, 4859, 126, 3, 22, "Input"],
+Cell[137335, 4864, 347, 9, 28, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[137719, 4878, 128, 3, 22, "Input"],
+Cell[137850, 4883, 391, 10, 28, "Output"]
+}, Open  ]],
+Cell[138256, 4896, 961, 33, 69, "Text"],
+
+Cell[CellGroupData[{
+Cell[139242, 4933, 145, 4, 22, "Input"],
+Cell[139390, 4939, 197, 5, 28, "Output"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+Cell[139624, 4949, 149, 4, 22, "Input"],
+Cell[139776, 4955, 219, 5, 28, "Output"]
+}, Open  ]],
+Cell[140010, 4963, 388, 15, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[140423, 4982, 200, 5, 31, "Input"],
+Cell[140626, 4989, 142, 4, 20, "Message"],
+Cell[140771, 4995, 142, 4, 20, "Message"],
+Cell[140916, 5001, 112, 3, 29, "Output"]
+}, Open  ]],
+Cell[141043, 5007, 100, 2, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[141168, 5013, 172, 4, 22, "Input"],
+Cell[141343, 5019, 463, 13, 29, "Output"]
+}, Open  ]],
+Cell[141821, 5035, 286, 10, 26, "Text"],
+Cell[142110, 5047, 100, 2, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[142235, 5053, 201, 5, 22, "Input"],
+Cell[142439, 5060, 185, 5, 28, "Output"]
+}, Open  ]],
+Cell[142639, 5068, 358, 14, 26, "Text"],
+
+Cell[CellGroupData[{
+Cell[143022, 5086, 157, 4, 22, "Input"],
+Cell[143182, 5092, 145, 4, 28, "Output"]
+}, Open  ]],
+Cell[143342, 5099, 198, 5, 26, "Text"],
+Cell[143543, 5106, 1387, 41, 83, "Text"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+
+
+
+(***********************************************************************
+End of Mathematica Notebook file.
+***********************************************************************)
+
